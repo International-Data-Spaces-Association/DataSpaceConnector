@@ -129,9 +129,11 @@ public class RouteManager {
             final var genericEndpoint = (GenericEndpoint) routeStart.get(0);
             velocityContext.put("startUrl", genericEndpoint.getAccessURL().toString());
             addBasicAuthHeaderForGenericEndpoint(velocityContext, genericEndpoint);
+        } else if (routeStart.get(0) instanceof AppEndpoint) {
+            final var appEndpoint = (AppEndpoint) routeStart.get(0);
+            velocityContext.put("startUrl", appEndpoint.getAccessURL().toString());
         } else {
-            // TODO app is route start
-            throw new RouteCreationException("An app as the route start is not yet supported.");
+            throw new RouteCreationException("The route start can not be identified");
         }
     }
 
@@ -151,9 +153,11 @@ public class RouteManager {
             final var genericEndpoint = (GenericEndpoint) routeEnd.get(0);
             velocityContext.put("endUrl", genericEndpoint.getAccessURL().toString());
             addBasicAuthHeaderForGenericEndpoint(velocityContext, genericEndpoint);
+        } else if (routeEnd.get(0) instanceof AppEndpoint) {
+            final var appEndpoint = (AppEndpoint) routeEnd.get(0);
+            velocityContext.put("endUrl", appEndpoint.getAccessURL().toString());
         } else {
-            //TODO app is route end
-            throw new RouteCreationException("An app as the route end is not yet supported.");
+            throw new RouteCreationException("The route end can not be identified");
         }
     }
 
