@@ -15,7 +15,9 @@
  */
 package io.dataspaceconnector.service.resource.type;
 
+import de.fraunhofer.iais.eis.ConfigurationModel;
 import de.fraunhofer.ids.messaging.core.config.ConfigContainer;
+import de.fraunhofer.ids.messaging.core.config.ConfigProperties;
 import de.fraunhofer.ids.messaging.core.config.ConfigUpdateException;
 import io.dataspaceconnector.common.runtime.ServiceResolver;
 import io.dataspaceconnector.model.base.AbstractFactory;
@@ -93,25 +95,32 @@ public class ConfigurationService extends BaseEntityService<Configuration, Confi
      * Mark a new configuration as active.
      *
      * @param newConfig Id of the new active configuration.
+     * @param startup true, if application is currently starting
      */
-    public void swapActiveConfig(final UUID newConfig) throws ConfigUpdateException {
+    public void swapActiveConfig(final UUID newConfig, final boolean startup)
+            throws ConfigUpdateException {
         final var activeConfig = findActiveConfig();
 
         if (activeConfig.isPresent()) {
-            replaceActiveConfig(newConfig, activeConfig.get());
+            swapActiveConfigInDb(newConfig);
+            if (!startup) {
+                resetMessagingConfig();
+            } else {
+                final var newActiveConfig = findActiveConfig();
+                newActiveConfig.ifPresent(this::updateConfigProperties);
+            }
         } else {
             ((ConfigurationRepository) getRepository()).setActive(newConfig);
         }
     }
 
-    private void replaceActiveConfig(final UUID newConfig, final Configuration activeConfig)
-            throws ConfigUpdateException {
-        if (activeConfig.getId().equals(newConfig)) {
-            reload(newConfig);
-        }
-
-        swapActiveConfigInDb(newConfig);
-        reload(newConfig);
+    /**
+     * Mark a new configuration as active.
+     *
+     * @param newConfig Id of the new active configuration.
+     */
+    public void swapActiveConfig(final UUID newConfig) throws ConfigUpdateException {
+        swapActiveConfig(newConfig, false);
     }
 
     /**
@@ -121,10 +130,7 @@ public class ConfigurationService extends BaseEntityService<Configuration, Confi
     public Configuration update(final UUID entityId, final ConfigurationDesc desc) {
         final var config = super.update(entityId, desc);
         try {
-            final var activeConfig = findActiveConfig();
-            if (activeConfig.isPresent() && activeConfig.get().getId().equals(config.getId())) {
-                reload(config.getId());
-            }
+            resetMessagingConfig();
         } catch (ConfigUpdateException ignored) {
         }
 
@@ -135,20 +141,71 @@ public class ConfigurationService extends BaseEntityService<Configuration, Confi
         final var repo = (ConfigurationRepository) getRepository();
         repo.unsetActive();
         repo.setActive(newConfig);
-    }
 
-    private void reload(final UUID newConfig) throws ConfigUpdateException {
-        final var configContainer = svcResolver.getService(ConfigContainer.class);
-        if (configContainer.isPresent()) {
-            final var activeConfig = getActiveConfig();
-            final var configuration = configBuilder.create(activeConfig);
-            configContainer.get().updateConfiguration(configuration);
-            if (log.isInfoEnabled()) {
-                log.info("Changing configuration profile [id=({})]", newConfig);
-            }
-
-            // TODO Change loglevel during runtime.
+        if (log.isInfoEnabled()) {
+            log.info("Successfully swapped active configuration in Database.");
         }
     }
 
+    private void resetMessagingConfig() throws ConfigUpdateException {
+        if (log.isDebugEnabled()) {
+            log.debug("Updating Messaging-Services configuration...");
+        }
+
+        final var activeConfig = getActiveConfig();
+        final var configuration = configBuilder.create(activeConfig);
+
+        updateConfigProperties(activeConfig);
+        updateConfigContainer(configuration, activeConfig);
+
+        if (log.isInfoEnabled()) {
+            log.info("Successfully updated Messaging-Services configuration.");
+        }
+    }
+
+    private void updateConfigContainer(final ConfigurationModel configuration,
+                                       final Configuration activeConfig)
+            throws ConfigUpdateException {
+        final var configContainer = svcResolver.getService(ConfigContainer.class);
+
+        if (configContainer.isPresent()) {
+            final var configBean = configContainer.get();
+
+            try {
+                updateKeyStoreManager(activeConfig, configBean);
+            } catch (Exception e) {
+                throw new ConfigUpdateException("Could not update KeyStoreManager!", e.getCause());
+            }
+
+            configBean.updateConfiguration(configuration);
+        }
+    }
+
+    private void updateKeyStoreManager(final Configuration activeConfig,
+                                       final ConfigContainer configBean)
+            throws NoSuchFieldException, IllegalAccessException {
+        final var keyStoreManager = configBean.getKeyStoreManager();
+
+        final var keyStorePw = keyStoreManager.getClass().getDeclaredField("keyStorePw");
+        keyStorePw.setAccessible(true);
+        keyStorePw.set(keyStoreManager, activeConfig.getKeystore().getPassword().toCharArray());
+
+        final var trustStorePw = keyStoreManager.getClass().getDeclaredField("trustStorePw");
+        trustStorePw.setAccessible(true);
+        trustStorePw.set(keyStoreManager, activeConfig.getTruststore().getPassword().toCharArray());
+
+        final var keyAlias = keyStoreManager.getClass().getDeclaredField("keyAlias");
+        keyAlias.setAccessible(true);
+        keyAlias.set(keyStoreManager, activeConfig.getKeystore().getAlias());
+    }
+
+    private void updateConfigProperties(final Configuration activeConfig) {
+        final var configProperties = svcResolver.getService(ConfigProperties.class);
+        if (configProperties.isPresent()) {
+            final var configBean = configProperties.get();
+            configBean.setKeyAlias(activeConfig.getKeystore().getAlias());
+            configBean.setKeyStorePassword(activeConfig.getKeystore().getPassword());
+            configBean.setTrustStorePassword(activeConfig.getTruststore().getPassword());
+        }
+    }
 }

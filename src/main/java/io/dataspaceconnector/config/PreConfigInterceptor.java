@@ -25,10 +25,11 @@ import io.dataspaceconnector.common.ids.DeserializationService;
 import io.dataspaceconnector.common.ids.mapping.FromIdsObjectMapper;
 import io.dataspaceconnector.service.resource.ids.builder.IdsConfigModelBuilder;
 import io.dataspaceconnector.service.resource.type.ConfigurationService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.FileInputStream;
@@ -40,11 +41,17 @@ import java.nio.file.Paths;
  * Intercepts {@link de.fraunhofer.ids.messaging.core.config.ConfigProducer} and changes how the
  * startup configuration is loaded.
  */
-@Component
+@Configuration
 @Slf4j
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Transactional
 public class PreConfigInterceptor implements PreConfigProducerInterceptor {
+
+    /**
+     * The property for forcing to reload the configuration from a file or not.
+     */
+    @Value("${configuration.force-reload.enabled:false}")
+    private boolean forceReload;
 
     /**
      * Service for ids deserialization.
@@ -72,9 +79,15 @@ public class PreConfigInterceptor implements PreConfigProducerInterceptor {
     @Override
     public ConfigurationModel perform(final ConfigProperties properties)
             throws ConfigProducerInterceptorException {
-        if (doesStoredConfigExits()) {
+        if (doesStoredConfigExits() && !forceReload) {
+            if (log.isInfoEnabled()) {
+                log.info("Loading configuration from DB.");
+            }
             return loadConfigFromDb();
         } else {
+            if (forceReload && log.isInfoEnabled()) {
+                log.info("Forced loading configuration from file.");
+            }
             return loadConfigFromFile(properties);
         }
     }
@@ -83,8 +96,15 @@ public class PreConfigInterceptor implements PreConfigProducerInterceptor {
         return configurationSvc.findActiveConfig().isPresent();
     }
 
-    private ConfigurationModel loadConfigFromDb() {
-        return configModelBuilder.create(configurationSvc.findActiveConfig().get());
+    private ConfigurationModel loadConfigFromDb() throws ConfigProducerInterceptorException {
+        var activeConfig = configurationSvc.findActiveConfig().get();
+        var configModel = configModelBuilder.create(activeConfig);
+        try {
+            configurationSvc.swapActiveConfig(activeConfig.getId(), true);
+        } catch (ConfigUpdateException e) {
+            throw new ConfigProducerInterceptorException(e.getMessage());
+        }
+        return configModel;
     }
 
     private ConfigurationModel loadConfigFromFile(final ConfigProperties properties)
@@ -110,9 +130,16 @@ public class PreConfigInterceptor implements PreConfigProducerInterceptor {
         }
 
         final var configModel = deserializationSvc.getConfigurationModel(config);
+
+        //copy config values from application.properties as not part of config.json
+        configModel.setKeyStorePassword(properties.getKeyStorePassword());
+        configModel.setTrustStorePassword(properties.getTrustStorePassword());
+        configModel.setKeyStoreAlias(properties.getKeyAlias());
+        configModel.setTrustStoreAlias(properties.getKeyAlias());
+
         final var dscConfig
                 = configurationSvc.create(FromIdsObjectMapper.fromIdsConfig(configModel));
-        configurationSvc.swapActiveConfig(dscConfig.getId());
+        configurationSvc.swapActiveConfig(dscConfig.getId(), true);
         return configModel;
     }
 
