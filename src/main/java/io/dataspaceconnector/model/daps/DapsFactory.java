@@ -41,6 +41,7 @@ public class DapsFactory extends AbstractNamedFactory<Daps, DapsDesc> {
     private boolean updateLocation(final Daps daps, final URI location) {
         final var newLocation = FactoryUtils.updateUri(daps.getLocation(), location,
                 DEFAULT_URI);
+        newLocation.ifPresent(daps::setLocation);
         return newLocation.isPresent();
     }
 }
