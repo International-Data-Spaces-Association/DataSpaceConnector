@@ -17,6 +17,7 @@ package io.dataspaceconnector.service.resource.spring;
 
 import io.dataspaceconnector.common.routing.RouteDataDispatcher;
 import io.dataspaceconnector.config.ConnectorConfig;
+import io.dataspaceconnector.config.DapsConfig;
 import io.dataspaceconnector.model.agreement.AgreementFactory;
 import io.dataspaceconnector.model.app.AppFactory;
 import io.dataspaceconnector.model.appstore.AppStoreFactory;
@@ -189,8 +190,8 @@ public class ResourceConfig {
      * @return The daps service bean.
      */
     @Bean("configurationDapsService")
-    public DapsService createDapsService(final DapsRepository repo) {
-        return new DapsService(repo, new DapsFactory());
+    public DapsService createDapsService(final DapsRepository repo, final DapsConfig dapsConfig) {
+        return new DapsService(repo, new DapsFactory(), dapsConfig);
     }
 
     /**
