@@ -34,5 +34,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(BasePath.DAPS)
 @Tag(name = ResourceName.DAPS, description = ResourceDescription.DAPS)
 public class DapsController extends BaseResourceController<Daps, DapsDesc, DapsView,
-        DapsService<Daps, DapsDesc>> {
+        DapsService> {
 }
