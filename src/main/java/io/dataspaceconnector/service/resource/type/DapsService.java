@@ -29,23 +29,16 @@ import lombok.NonNull;
 public class DapsService<T extends Daps, D extends DapsDesc>
         extends BaseEntityService<T, D> {
 
-    /**
-     * DapsConfig instance used to add DAPS to whitelist
-     */
-    private final @NonNull DapsConfig dapsConfig;
 
     /**
      * Constructor for DapsService class, autowires the DapsConfig field.
      *  @param repository The daps repository.
      * @param factory    The daps object logic.
-     * @param dapsConfig daps configuration
      */
     public DapsService(
             @NonNull BaseEntityRepository<T> repository,
-            @NonNull AbstractFactory<T, D> factory,
-            @NonNull DapsConfig dapsConfig) {
+            @NonNull AbstractFactory<T, D> factory) {
         super(repository, factory);
-        this.dapsConfig = dapsConfig;
     }
 
     /**
@@ -57,7 +50,7 @@ public class DapsService<T extends Daps, D extends DapsDesc>
     @Override
     protected final T persist(final T daps) {
         if (daps.getLocation() != null) {
-            dapsConfig.addDapsToWhitelist(daps.getLocation());
+//            dapsConfig.addDapsToWhitelist(daps.getLocation());
         }
 
         return super.persist(daps);
