@@ -40,7 +40,6 @@ public class DapsConfig {
 
     public void checkWhitelist() {
         DapsVerifier.addValidationRule(claim -> {
-            log.info("Issuer; " + claim.getIssuer());
                     if (isWhitelisted(claim)) {
                         return ValidationRuleResult.success();
                     }
