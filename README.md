@@ -112,7 +112,7 @@ improvement, or have an idea for a useful feature. Please find a set of guidelin
 The current development is driven by
 * [Sebastian Opriel](https://github.com/tmberthold), [sovity GmbH](http://sovity.de)
 * [Tim Berthold](https://github.com/tmberthold), [sovity GmbH](http://sovity.de)
-* [Omar Luiz Barreto Silva](https://github.com/ob-silva), [sovity GmbH](http://sovity.de)
+* [Omar Silva](https://github.com/ob-silva), [sovity GmbH](http://sovity.de)
 
 The former core development was driven by
 * [Heinrich Pettenpohl](https://github.com/HeinrichPet), [Fraunhofer ISST](https://www.isst.fraunhofer.de/en.html), project manager
