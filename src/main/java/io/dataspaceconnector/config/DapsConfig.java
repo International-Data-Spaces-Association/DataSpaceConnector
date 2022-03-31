@@ -34,8 +34,8 @@ public class DapsConfig {
     public final @NonNull DapsRepository repository;
 
     public DapsConfig(@NonNull DapsRepository repository) {
-        checkWhitelist();
         this.repository = repository;
+        checkWhitelist();
     }
 
     public void checkWhitelist() {
