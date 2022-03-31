@@ -48,6 +48,12 @@ public class DapsConfig {
         );
     }
 
+    /**
+     * Checks if the issuer of the given JTW claim is in the whitelisted DAPS list.
+     * Backwards compatibility is given by returning true, if the whitelist of DAPSs is empty.
+     * @param claim JWT token, whose issuer shall be validated
+     * @return true if the whitelist is empty or the issues of the claim is found in the whitelist, otherwise false
+     */
     private boolean isWhitelisted(Claims claim) {
         List<String> whitelistedDaps = repository.findAll().stream().map(Daps::getLocation).map(URI::toString).toList();
         return whitelistedDaps.size() == 0 || whitelistedDaps.contains(claim.getIssuer());
