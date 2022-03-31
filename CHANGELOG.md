@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - Add additional field to `GenericEndpointView`.
+- Manageable DAPS entities
+- DAPS whitelisting. It is possible to add DAPS entities, to restrict data exchange with connectors that receive their DATs from a trusted, thus whitelisted, DAPS. If no DAPS is added to that list IDS messages are accepted by every connector with a valid DAT (PRODUCTIVE_DEPLOYMENT)
 
 ### Fixed
 - Derive maven compiler version globally in pom instead of setting it individually.
@@ -47,8 +49,6 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - Use connector fingerprints instead of IDs to create processes at the Clearing House.
-
-### Fixed
 - Add relation annotation to `DatabaseDataSourceView` to display all `DataSources` in the same array.
 - Add missing semicolons in baseline.sql to comply with proper SQL syntax for flyway.
 
