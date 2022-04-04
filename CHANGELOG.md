@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Fixed
-- Derive maven compiler version globally in pom instead of setting it individually (#47)
+- Derive maven compiler version globally in pom instead of setting it individually
 
 
 ## [7.0.3] - 2022-03-08
