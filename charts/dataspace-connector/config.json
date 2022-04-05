@@ -47,7 +47,7 @@
       "@id" : "https://example.org/"
     },
     "ids:maintainer" : {
-      "@id" : "https://www.sovity.de/"
+      "@id" : "https://sovity.de/"
     }
   },
   "ids:trustStore" : {
