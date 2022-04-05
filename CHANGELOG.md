@@ -6,8 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - Add additional field to `GenericEndpointView`.
-- Manageable DAPS entities
-- DAPS whitelisting. It is possible to add DAPS entities, to restrict data exchange with connectors that receive their DATs from a trusted, thus whitelisted, DAPS. If no DAPS is added to that list IDS messages are accepted by every connector with a valid DAT (PRODUCTIVE_DEPLOYMENT)
+- Manageable DAPS entities (CRUD APIs)
+- DAPS whitelisting for producitve deployment. It is now possible to add DAPS entities, to restrict data exchange with connectors that receive their DATs from the same DAPS as the connector is using or from additional whitelisted DAPS . In the default case, all DAPS are trusted. If only the own DAPS should be trusted, the DAPS-URL must be added as the only entry to the whitelist. If only specific DAPS are to be trusted in addition to the own used DAPS, they must be added to the whitelist. The own DAPS is always trusted. If a message with a DAT arrives from a non-trusted DAPS, it is rejected with a RejectionMessage.
 
 ### Fixed
 - Derive maven compiler version globally in pom instead of setting it individually.
