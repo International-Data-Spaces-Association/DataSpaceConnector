@@ -44,7 +44,7 @@
       "@id" : "idsc:BASE_SECURITY_PROFILE"
     },
     "ids:curator" : {
-      "@id" : "https://www.sovity.de/"
+      "@id" : "https://example.org/"
     },
     "ids:maintainer" : {
       "@id" : "https://www.sovity.de/"
