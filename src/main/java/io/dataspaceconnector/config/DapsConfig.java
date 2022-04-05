@@ -87,8 +87,17 @@ public class DapsConfig {
                 .map(URI::toString)
                 .toList();
 
-        return whitelistedDapsList.isEmpty()
+        final var result = whitelistedDapsList.isEmpty()
                 || ownDapsUrl.equals(claim.getIssuer())
                 || whitelistedDapsList.contains(claim.getIssuer());
+
+        if (result && log.isInfoEnabled()) {
+            log.info("Successfully validated DAPS whitelisting.");
+        } else if (!result && log.isWarnEnabled()) {
+            log.warn("Issuer DAPS of DAT of incoming message"
+                    + " not whitelisted! [issuer=({})]", claim.getIssuer());
+        }
+
+        return result;
     }
 }

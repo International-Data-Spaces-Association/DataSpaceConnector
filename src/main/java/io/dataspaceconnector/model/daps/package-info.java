@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 /**
- * This package contains the broker model.
+ * This package contains the daps model.
  */
 package io.dataspaceconnector.model.daps;
