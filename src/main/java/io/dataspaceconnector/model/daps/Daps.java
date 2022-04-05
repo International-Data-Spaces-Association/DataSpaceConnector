@@ -18,17 +18,23 @@ package io.dataspaceconnector.model.daps;
 import io.dataspaceconnector.model.base.RemoteService;
 import io.dataspaceconnector.model.named.NamedEntity;
 import io.dataspaceconnector.model.util.UriConverter;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.Table;
 import java.net.URI;
 
 import static io.dataspaceconnector.model.config.DatabaseConstants.URI_COLUMN_LENGTH;
 
 /**
- * The entity where connectors can be verified
+ * Entity for DAPS.
  */
 @javax.persistence.Entity
 @Table(name = "daps")

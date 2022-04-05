@@ -26,56 +26,69 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 import java.net.URI;
-import java.util.List;
 
 /**
- * This class adds a Daps validator for whitelisting of communication partner's DAPS to the Messaging Services' DapsVerifier.
+ * This class adds a Daps validator for whitelisting of communication partner's DAPS to
+ * the Messaging Services' DapsVerifier.
  */
 @Log4j2
 @Configuration
 public class DapsConfig {
 
     /**
-     * Own DAPS URL
+     * Connector DAPS URL.
      */
     @Value("${daps.url}")
     private String ownDapsUrl;
 
     /**
-     * The Daps repository
+     * Daps repository.
      */
     private final @NonNull DapsRepository repository;
 
     /**
      * Constructor.
-     * @param repository the Daps repository.
+     *
+     * @param pRepository the Daps repository.
      */
-    public DapsConfig(@NonNull final DapsRepository repository) {
-        this.repository = repository;
+    public DapsConfig(@NonNull final DapsRepository pRepository) {
+        this.repository = pRepository;
         initWhitelist();
     }
 
     /**
      * Method initializes Daps verifier check.
      */
-    public void initWhitelist() {
+    private void initWhitelist() {
         DapsVerifier.addValidationRule(claim -> {
                     if (isWhitelisted(claim)) {
                         return ValidationRuleResult.success();
                     }
-                    return ValidationRuleResult.failure("Issuer DAPS '" + claim.getIssuer() + "' not whitelisted");
+                    return ValidationRuleResult.failure(
+                            "Issuer DAPS '" + claim.getIssuer() + "' not whitelisted");
                 }
         );
     }
 
     /**
      * Checks if the issuer of the given JTW claim is in the whitelisted DAPS list.
-     * Backwards compatibility is given by returning true, if the whitelist of DAPSs is empty or own DAPS is given.
+     * Backwards compatibility is given by returning true,
+     * if the whitelist of DAPSs is empty or own DAPS is given.
+     *
      * @param claim JWT token, whose issuer shall be validated
-     * @return true if the whitelist is empty or the issues of the claim is found in the whitelist or own DAPS is given, otherwise false
+     * @return true if the whitelist is empty or the issues of the claim is
+     * found in the whitelist or own DAPS is given, otherwise false
      */
-    private boolean isWhitelisted(Claims claim) {
-        List<String> whitelistedDapsList = repository.findAll().stream().map(Daps::getLocation).map(URI::toString).toList();
-        return whitelistedDapsList.isEmpty() || ownDapsUrl.equals(claim.getIssuer()) || whitelistedDapsList.contains(claim.getIssuer());
+    private boolean isWhitelisted(final Claims claim) {
+        final var whitelistedDapsList = repository
+                .findAll()
+                .stream()
+                .map(Daps::getLocation)
+                .map(URI::toString)
+                .toList();
+
+        return whitelistedDapsList.isEmpty()
+                || ownDapsUrl.equals(claim.getIssuer())
+                || whitelistedDapsList.contains(claim.getIssuer());
     }
 }
