@@ -28,26 +28,42 @@ import org.springframework.context.annotation.Configuration;
 import java.net.URI;
 import java.util.List;
 
+/**
+ * This class adds a Daps validator for whitelisting of communication partner's DAPS to the Messaging Services' DapsVerifier.
+ */
 @Log4j2
 @Configuration
 public class DapsConfig {
 
+    /**
+     * Own DAPS URL
+     */
     @Value("${daps.url}")
     private String ownDapsUrl;
 
-    public final @NonNull DapsRepository repository;
+    /**
+     * The Daps repository
+     */
+    private final @NonNull DapsRepository repository;
 
-    public DapsConfig(@NonNull DapsRepository repository) {
+    /**
+     * Constructor.
+     * @param repository the Daps repository.
+     */
+    public DapsConfig(@NonNull final DapsRepository repository) {
         this.repository = repository;
-        checkWhitelist();
+        initWhitelist();
     }
 
-    public void checkWhitelist() {
+    /**
+     * Method initializes Daps verifier check.
+     */
+    public void initWhitelist() {
         DapsVerifier.addValidationRule(claim -> {
                     if (isWhitelisted(claim)) {
                         return ValidationRuleResult.success();
                     }
-                    return ValidationRuleResult.failure("Issuer DAPS '"+claim.getIssuer()+"' not whitelisted");
+                    return ValidationRuleResult.failure("Issuer DAPS '" + claim.getIssuer() + "' not whitelisted");
                 }
         );
     }
