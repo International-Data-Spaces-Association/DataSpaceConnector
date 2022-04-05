@@ -1,5 +1,5 @@
 --
--- Copyright 2020-2022 Fraunhofer Institute for Software and Systems Engineering
+-- Copyright 2022 sovity GmbH
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -49,7 +49,7 @@ CREATE TABLE public.agreement (
                                   archived boolean NOT NULL,
                                   confirmed boolean NOT NULL,
                                   remote_id character varying(2048),
-                                  value text
+                                  value oid
 );
 
 
@@ -501,7 +501,7 @@ CREATE TABLE public.contractrule (
                                      description character varying(4096),
                                      title character varying(255),
                                      remote_id character varying(2048),
-                                     value text
+                                     value oid
 );
 
 
@@ -894,7 +894,7 @@ CREATE TABLE public.route (
                               modified_date timestamp without time zone NOT NULL,
                               description character varying(4096),
                               title character varying(255),
-                              configuration text,
+                              configuration oid,
                               deploy character varying(255),
                               end_id uuid,
                               output_id uuid,
