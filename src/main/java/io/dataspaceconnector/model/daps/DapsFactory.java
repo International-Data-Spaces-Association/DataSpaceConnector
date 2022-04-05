@@ -31,7 +31,7 @@ public class DapsFactory extends AbstractNamedFactory<Daps, DapsDesc> {
 
     /**
      * @param desc The description of the entity.
-     * @return The new broker entity.
+     * @return The new daps entity.
      */
     @Override
     protected Daps initializeEntity(final DapsDesc desc) {
