@@ -22,6 +22,7 @@ import io.dataspaceconnector.repository.DapsRepository;
 import io.jsonwebtoken.Claims;
 import lombok.NonNull;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 import java.net.URI;
@@ -30,6 +31,9 @@ import java.util.List;
 @Log4j2
 @Configuration
 public class DapsConfig {
+
+    @Value("${daps.url}")
+    private String ownDapsUrl;
 
     public final @NonNull DapsRepository repository;
 
@@ -43,19 +47,19 @@ public class DapsConfig {
                     if (isWhitelisted(claim)) {
                         return ValidationRuleResult.success();
                     }
-                    return ValidationRuleResult.failure("Issuer DAPS not whitelisted");
+                    return ValidationRuleResult.failure("Issuer DAPS '"+claim.getIssuer()+"' not whitelisted");
                 }
         );
     }
 
     /**
      * Checks if the issuer of the given JTW claim is in the whitelisted DAPS list.
-     * Backwards compatibility is given by returning true, if the whitelist of DAPSs is empty.
+     * Backwards compatibility is given by returning true, if the whitelist of DAPSs is empty or own DAPS is given.
      * @param claim JWT token, whose issuer shall be validated
-     * @return true if the whitelist is empty or the issues of the claim is found in the whitelist, otherwise false
+     * @return true if the whitelist is empty or the issues of the claim is found in the whitelist or own DAPS is given, otherwise false
      */
     private boolean isWhitelisted(Claims claim) {
-        List<String> whitelistedDaps = repository.findAll().stream().map(Daps::getLocation).map(URI::toString).toList();
-        return whitelistedDaps.size() == 0 || whitelistedDaps.contains(claim.getIssuer());
+        List<String> whitelistedDapsList = repository.findAll().stream().map(Daps::getLocation).map(URI::toString).toList();
+        return whitelistedDapsList.isEmpty() || ownDapsUrl.equals(claim.getIssuer()) || whitelistedDapsList.contains(claim.getIssuer());
     }
 }
