@@ -32,7 +32,7 @@ import static io.dataspaceconnector.model.config.DatabaseConstants.URI_COLUMN_LE
  */
 @javax.persistence.Entity
 @Table(name = "daps")
-@SQLDelete(sql = "UPDATE broker SET deleted=true WHERE id=?")
+@SQLDelete(sql = "UPDATE daps SET deleted=true WHERE id=?")
 @Where(clause = "deleted = false")
 @Getter
 @Setter(AccessLevel.PACKAGE)
