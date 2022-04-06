@@ -519,7 +519,8 @@ CREATE TABLE public.daps (
                              modified_date timestamp without time zone NOT NULL,
                              description character varying(4096),
                              title character varying(255),
-                             location character varying(2048)
+                             location character varying(2048),
+                             whitelisted boolean
 );
 
 
@@ -1176,7 +1177,7 @@ COPY public.catalog_requested_resources (catalogs_id, requested_resources_id) FR
 --
 
 COPY public.configuration (id, bootstrap_id, created_date, deleted, modified_date, description, title, active, connector_id, curator, default_endpoint, deploy_mode, log_level, maintainer, outbound_model_version, security_profile, status, version, keystore_id, proxy_id, truststore_id) FROM stdin;
-bb7bcb76-ee01-4012-9294-b0a02807c969	\N	2022-03-31 12:50:31.909661	f	2022-03-31 12:50:31.909661	IDS Connector with static example resources hosted by the Fraunhofer ISST	Dataspace Connector	t	https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea	https://www.isst.fraunhofer.de/	https://localhost:8080/api/ids/data	TEST	WARN	https://www.isst.fraunhofer.de/	4.2.7	BASE_SECURITY	ONLINE	7.0.3	94596fc0-7451-47c3-8760-aed39f0fbab1	\N	288b47d6-1fe4-4522-91e3-dcab7eb52bd8
+bb7bcb76-ee01-4012-9294-b0a02807c969	\N	2022-03-31 12:50:31.909661	f	2022-03-31 12:50:31.909661	IDS Connector reference implementation	Dataspace Connector	t	https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea	https://www.isst.fraunhofer.de/	https://localhost:8080/api/ids/data	TEST	WARN	https://www.isst.fraunhofer.de/	4.2.7	BASE_SECURITY	ONLINE	7.0.3	94596fc0-7451-47c3-8760-aed39f0fbab1	\N	288b47d6-1fe4-4522-91e3-dcab7eb52bd8
 \.
 
 
@@ -1251,7 +1252,7 @@ COPY public.contractrule (id, bootstrap_id, created_date, deleted, modified_date
 -- Data for Name: daps; Type: TABLE DATA; Schema: public; Owner: connector
 --
 
-COPY public.daps (id, bootstrap_id, created_date, deleted, modified_date, description, title, location) FROM stdin;
+COPY public.daps (id, bootstrap_id, created_date, deleted, modified_date, description, title, location, whitelisted) FROM stdin;
 \.
 
 
