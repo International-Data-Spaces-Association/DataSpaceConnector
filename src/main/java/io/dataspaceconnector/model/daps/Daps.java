@@ -58,4 +58,8 @@ public class Daps extends NamedEntity implements RemoteService {
     @Column(length = URI_COLUMN_LENGTH)
     private URI location;
 
+    /**
+     * Whether this daps is whitelisted.
+     */
+    private Boolean whitelisted;
 }

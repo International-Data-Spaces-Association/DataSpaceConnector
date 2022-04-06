@@ -83,21 +83,29 @@ public class DapsConfig {
         final var whitelistedDapsList = repository
                 .findAll()
                 .stream()
+                .filter(daps -> Boolean.TRUE.equals(daps.getWhitelisted()))
                 .map(Daps::getLocation)
                 .map(URI::toString)
                 .toList();
 
-        final var result = whitelistedDapsList.isEmpty()
-                || ownDapsUrl.equals(claim.getIssuer())
-                || whitelistedDapsList.contains(claim.getIssuer());
+        //if no DAPS in whitelist, then trust all (even unknown)
+        var trusted = whitelistedDapsList.isEmpty();
 
-        if (result && log.isInfoEnabled()) {
+        if (!trusted) {
+            //if DAPS in whitelist, then it must be either the own used or a whitelisted
+            final var isConnectorDaps = ownDapsUrl.equals(claim.getIssuer());
+            final var isWhitelisted = whitelistedDapsList.contains(claim.getIssuer());
+
+            trusted = isConnectorDaps || isWhitelisted;
+        }
+
+        if (trusted && log.isInfoEnabled()) {
             log.info("Successfully validated DAPS whitelisting.");
-        } else if (!result && log.isWarnEnabled()) {
+        } else if (!trusted && log.isWarnEnabled()) {
             log.warn("Issuer DAPS of DAT of incoming message"
                     + " not whitelisted! [issuer=({})]", claim.getIssuer());
         }
 
-        return result;
+        return trusted;
     }
 }

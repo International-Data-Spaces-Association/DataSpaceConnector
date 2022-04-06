@@ -30,6 +30,11 @@ public class DapsFactory extends AbstractNamedFactory<Daps, DapsDesc> {
     public static final URI DEFAULT_URI = URI.create("https://daps.com");
 
     /**
+     * Default whitelisted setting.
+     */
+    public static final Boolean DEFAULT_WHITELISTED = false;
+
+    /**
      * @param desc The description of the entity.
      * @return The new daps entity.
      */
@@ -45,7 +50,10 @@ public class DapsFactory extends AbstractNamedFactory<Daps, DapsDesc> {
      */
     @Override
     protected boolean updateInternal(final Daps daps, final DapsDesc desc) {
-        return updateLocation(daps, desc.getLocation());
+        final var updatedLocation = updateLocation(daps, desc.getLocation());
+        final var updatedWhitelisted = updateWhitelisted(daps, desc.getWhitelisted());
+
+        return updatedLocation || updatedWhitelisted;
     }
 
     /**
@@ -57,6 +65,20 @@ public class DapsFactory extends AbstractNamedFactory<Daps, DapsDesc> {
         final var newLocation = FactoryUtils.updateUri(daps.getLocation(), location,
                 DEFAULT_URI);
         newLocation.ifPresent(daps::setLocation);
+
         return newLocation.isPresent();
+    }
+
+    /**
+     * @param daps The entity to be updated.
+     * @param whitelisted Whether to whitelist the DAPS or not.
+     * @return True, if daps is updated.
+     */
+    private boolean updateWhitelisted(final Daps daps, final Boolean whitelisted) {
+        final var newWhitelisted = FactoryUtils
+                .updateBoolean(daps.getWhitelisted(), whitelisted, DEFAULT_WHITELISTED);
+        newWhitelisted.ifPresent(daps::setWhitelisted);
+
+        return newWhitelisted.isPresent();
     }
 }

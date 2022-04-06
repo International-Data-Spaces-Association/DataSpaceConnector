@@ -63,4 +63,8 @@ public class DapsView extends RepresentationModel<DapsView> {
      */
     private String description;
 
+    /**
+     * Whether this daps is whitelisted.
+     */
+    private Boolean whitelisted;
 }

@@ -33,4 +33,8 @@ public class DapsDesc extends NamedDescription {
      */
     private URI location;
 
+    /**
+     * Whether this daps is whitelisted.
+     */
+    private Boolean whitelisted;
 }
