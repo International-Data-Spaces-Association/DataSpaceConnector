@@ -32,12 +32,12 @@
 	<version>${revision}</version>
 
 	<name>Dataspace Connector</name>
-	<description>IDS Connector originally developed by the Fraunhofer ISST</description>
-	<url>https://www.dataspace-connector.io/</url>
+	<description>IDS Connector reference implementation</description>
+	<url>https://github.com/International-Data-Spaces-Association/DataspaceConnector</url>
 	<inceptionYear>2020-2022</inceptionYear>
 	<organization>
-		<name>Fraunhofer Institute for Software and Systems Engineering</name>
-		<url>https://www.isst.fraunhofer.de/</url>
+		<name>sovity GmbH</name>
+		<url>https://sovity.de</url>
 	</organization>
 	<licenses>
 		<license>
@@ -47,46 +47,15 @@
 		</license>
 	</licenses>
 
-	<developers>
-		<developer>
-			<name>Julia Pampus</name>
-			<email>julia.pampus@isst.fraunhofer.de</email>
-			<organization>Fraunhofer Institute for Software and Systems Engineering</organization>
-			<organizationUrl>https://www.isst.fraunhofer.de/</organizationUrl>
-			<roles>
-				<role>lead</role>
-				<role>developer</role>
-			</roles>
-		</developer>
-		<developer>
-			<name>Ronja Quensel</name>
-			<email>ronja.quensel@isst.fraunhofer.de</email>
-			<organization>Fraunhofer Institute for Software and Systems Engineering</organization>
-			<organizationUrl>https://www.isst.fraunhofer.de/</organizationUrl>
-			<roles>
-				<role>developer</role>
-			</roles>
-		</developer>
-		<developer>
-			<name>Brian-Frederik Jahnke</name>
-			<email>brian-frederik.jahnke@isst.fraunhofer.de</email>
-			<organization>Fraunhofer Institute for Software and Systems Engineering</organization>
-			<organizationUrl>https://www.isst.fraunhofer.de/</organizationUrl>
-			<roles>
-				<role>developer</role>
-			</roles>
-		</developer>
-	</developers>
-
 	<issueManagement>
 		<system>Github</system>
-		<url>https://github.com/FraunhoferISST/DataspaceConnector/issues</url>
+		<url>https://github.com/International-Data-Spaces-Association/DataspaceConnector/issues</url>
 	</issueManagement>
 
 	<properties>
 		<!-- General -->
-		<revision>7.0.3</revision>
-		<email>info@dataspace-connector.de</email>
+		<revision>7.1.0</revision>
+		<email>support@sovity.de</email>
 
 		<!-- Build info -->
 		<java.version>17</java.version>
@@ -96,19 +65,19 @@
 		<!-- Dependencies -->
 		<ids-messaging-services.version>6.1.0</ids-messaging-services.version>
 		<springframework.version>5.3.18</springframework.version>
-		<swagger-annotations.version>1.6.5</swagger-annotations.version>
+		<swagger-annotations.version>1.6.6</swagger-annotations.version>
 		<okhttp.version>4.9.3</okhttp.version>
 		<modelmapper.version>3.1.0</modelmapper.version>
 		<jackson.version>2.13.2</jackson.version>
 		<jackson-databind.version>2.13.2.2</jackson-databind.version>
 		<postgres.version>42.3.3</postgres.version>
-		<springdoc.version>1.6.6</springdoc.version>
+		<springdoc.version>1.6.7</springdoc.version>
 		<equalsverifier.version>3.10</equalsverifier.version>
 		<jaeger.version>3.3.1</jaeger.version>
 		<freemarker.version>2.3.31</freemarker.version>
 		<camel.version>3.16.0</camel.version>
 		<idscp2.version>0.10.2</idscp2.version>
-		<protobuf.version>3.19.4</protobuf.version>
+		<protobuf.version>3.20.0</protobuf.version>
 		<jsonwebtoken.version>0.11.2</jsonwebtoken.version>
 
 		<!-- Plugins -->
@@ -121,10 +90,10 @@
 		<maven-site-plugin.version>3.11.0</maven-site-plugin.version>
 		<maven-project-info-reports-plugin.version>3.2.2</maven-project-info-reports-plugin.version>
 		<spotbugs.version>4.6.0</spotbugs.version>
-		<findsecbugs-plugin.version>1.11.0</findsecbugs-plugin.version>
+		<findsecbugs-plugin.version>1.12.0</findsecbugs-plugin.version>
 		<checkstyle-plugin.version>3.1.2</checkstyle-plugin.version>
 		<checkstyle.version>10.1</checkstyle.version>
-		<jacoco.version>0.8.7</jacoco.version>
+		<jacoco.version>0.8.8</jacoco.version>
 		<pmd.version>6.44.0</pmd.version>
 		<pmd-plugin.version>3.16.0</pmd-plugin.version>
 		<versions-maven-plugin.version>2.10.0</versions-maven-plugin.version>
@@ -293,7 +262,7 @@
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
-			<version>8.5.5</version>
+			<version>8.5.7</version>
 		</dependency>
 
 		<dependency>
@@ -842,40 +811,6 @@
                         </configuration>
                     </execution>
                 </executions>
-			</plugin>
-			<plugin>
-				<groupId>com.mycila</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-				<version>${license-plugin.version}</version>
-				<configuration>
-					<licenseSets>
-						<licenseSet>
-							<header>scripts/ci/license/header.txt</header>
-							<excludes>
-								<exclude>**/README</exclude>
-								<exclude>src/test/resources/**</exclude>
-								<exclude>src/main/resources/**</exclude>
-								<exclude>scripts/ci/e2e/active-tests.txt</exclude>
-								<exclude>**/*.env</exclude>
-								<exclude>**/lombok.config</exclude>
-								<exclude>**/.dockerignore</exclude>
-								<exclude>charts/**/Chart.lock</exclude>
-								<exclude>charts/**/.helmignore</exclude>
-								<exclude>charts/**/**/*.yaml</exclude>
-								<exclude>charts/**/**/NOTES.txt</exclude>
-								<exclude>**/requirements.txt</exclude>
-								<exclude>**/*.tgz</exclude>
-								<exclude>charts/**/*.tpl</exclude>
-								<exclude>docs/**</exclude>
-								<exclude>.editorconfig</exclude>
-								<exclude>**/.trivyignore</exclude>
-							</excludes>
-						</licenseSet>
-					</licenseSets>
-					<properties>
-						<year>${project.inceptionYear}</year>
-					</properties>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.pitest</groupId>
