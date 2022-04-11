@@ -2,9 +2,36 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [UNRELEASED]
 
 ### Changed
+- Code base refactorings and removing of unused code.
+
+### Dependencies
+- Update com.h3xstream.findsecbugs:findsecbugs-plugin version from 1.11.0 to 1.12.0.
+- Update org.flywaydb:flyway-core version from 8.5.5 to 8.5.7.
+- Update springdoc version from 1.6.6 to 1.6.7.
+- Update de.fhg.aisec.ids:camel-idscp2 version from 0.6.0 to 0.10.2.
+- Add io.jsonwebtoken:jjwt-impl and :jjwt-api version 0.11.2.
+- Add org.bitbucket.b_c:jose4j version 0.7.11.
+
+## [7.1.0] - 2022-04-06
+
+### Added
+- Add additional field to `GenericEndpointView`.
+- New APIs: Manageable DAPS entities (CRUD APIs)
+- New Feature: DAPS whitelisting for producitve deployment: It is now possible to whitelist DAPS and to restrict data exchange with IDS Connectors that receive their DATs from whitelisted DAPS. In the default case without changes, all DAPS are trusted. For this purpose the column `whitelisted=true/false` is available at the DAPS entites. To activate the whitelisting functionality, there must be at least one DAPS entity with `whitelisted=true` (this can also be the DAPS used by the connector to only trust the own used DAPS). If a message with a DAT arrives while whitelisting is active and from a non-whitelisted DAPS, the message is rejected with a RejectionMessage.
+
+### Fixed
+- Derive maven compiler version globally in pom instead of setting it individually.
+
+### Changed
+- Updating of the connector branding.
+
+### Removed
+- Removed com.mycila:license-maven-plugin to support multiple different license headers.
+
+### Dependency Maintenance
 - Update jackson version from 2.13.1 to 2.13.2.
 - Add jackson-databind version 2.13.2.2.
 - Update org.springframework version from 5.3.15 to 5.3.18.
@@ -24,6 +51,10 @@ All notable changes to this project will be documented in this file.
 - Update org.apache.maven.plugins:maven-jxr-plugin version from 3.1.1 to 3.2.0.
 - Update org.flywaydb:flyway-core version from 8.4.4 to 8.5.5.
 - Update spotbugs version from 4.5.3 to 4.6.0.
+- Update camel version from 3.15.0 to 3.16.0.
+- Update com.google.protobuf:protobuf-java version from 3.19.4 to 3.20.0.
+- Update io.swagger:swagger-annotations version from 1.6.5 to 1.6.6.
+- Update org.jacoco:jacoco-maven-plugin version from 0.8.7 to 0.8.8.
 
 ## [7.0.3] - 2022-03-08
 
@@ -38,8 +69,6 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - Use connector fingerprints instead of IDs to create processes at the Clearing House.
-
-### Fixed
 - Add relation annotation to `DatabaseDataSourceView` to display all `DataSources` in the same array.
 - Add missing semicolons in baseline.sql to comply with proper SQL syntax for flyway.
 

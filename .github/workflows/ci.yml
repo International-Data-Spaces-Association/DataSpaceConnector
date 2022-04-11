@@ -47,31 +47,8 @@ jobs:
     - name: Run style checks
       run: mvn -B checkstyle:check --file pom.xml
 
-  license:
-    needs: [setup]
-    timeout-minutes: 5
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK ${{ matrix.java }}
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'temurin'
-        java-version: '17'
-    - name: Cache maven packages
-      uses: actions/cache@v3.0.1
-      with:
-        path: ~/.m2
-        key: ${{ runner.os }}-${{ needs.setup.outputs.branch_name }}-license-${{ hashFiles('**/pom.xml') }}
-        restore-keys: ${{ runner.os }}-${{ needs.setup.outputs.branch_name }}-license-
-    - name: Run license checks
-      run: mvn -B license:check --file pom.xml
-
   static-code-analysis:
-    needs: [setup, style, license]
+    needs: [setup, style]
     timeout-minutes: 5
     runs-on: ubuntu-latest
     strategy:
@@ -94,7 +71,7 @@ jobs:
       run: mvn -B compile spotbugs:check --file pom.xml
 
   unit-and-integration-tests:
-    needs: [setup, style, license]
+    needs: [setup, style]
     timeout-minutes: 30
     runs-on: ${{ matrix.os }}
     strategy:
@@ -238,7 +215,7 @@ jobs:
 
     steps:
       - name: Download image
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: ${{ needs.build_test_image.outputs.image_artifact_name }}-image
       - name: Load image into docker
@@ -360,15 +337,15 @@ jobs:
           cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
           chmod 600 ~/.kube/config
       - name: Download image
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: ${{ needs.build_test_image.outputs.image_artifact_name }}-image
       - name: Download backend image
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: ${{ needs.build_test_backend_image.outputs.image_artifact_name }}-image
       - name: Download test runner image
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: ${{ needs.build_test_runner_image.outputs.image_artifact_name }}-image
       - name: Load image into cluster
