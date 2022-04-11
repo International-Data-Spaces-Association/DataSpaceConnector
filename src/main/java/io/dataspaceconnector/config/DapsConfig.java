@@ -78,21 +78,33 @@ public class DapsConfig {
 
             for (final var dapsUrl : whitelistedDaps) {
                 if (!dapsUrl.trim().isEmpty()) {
-                    try {
-                        final var dapsDesc = new DapsDesc();
-                        dapsDesc.setLocation(new URI(dapsUrl));
-                        dapsDesc.setTitle(dapsUrl);
-                        dapsDesc.setDescription(dapsUrl);
-                        dapsDesc.setWhitelisted(true);
-                        final var daps = dapsFactory.create(dapsDesc);
-                        repository.save(daps);
-                    } catch (URISyntaxException e) {
-                        if (log.isWarnEnabled()) {
-                            log.warn("Whitelisting DAPS found non-URI value, "
-                                    + "ignoring value. [value=({})]", dapsUrl);
-                        }
-                    }
+                    persistDaps(dapsFactory, dapsUrl);
                 }
+            }
+        }
+    }
+
+    /**
+     * Persists a single DAPS given the factory and the DAPS URL.
+     *
+     * @param dapsFactory The DAPS factory.
+     * @param dapsUrl The URL of the DAPS to persist.
+     */
+    private void persistDaps(final DapsFactory dapsFactory, final String dapsUrl) {
+        try {
+            final var dapsDesc = new DapsDesc();
+            dapsDesc.setLocation(new URI(dapsUrl));
+            dapsDesc.setTitle(dapsUrl);
+            dapsDesc.setDescription(dapsUrl);
+            dapsDesc.setWhitelisted(true);
+
+            final var daps = dapsFactory.create(dapsDesc);
+
+            repository.save(daps);
+        } catch (URISyntaxException e) {
+            if (log.isWarnEnabled()) {
+                log.warn("Whitelisting DAPS found non-URI value, "
+                        + "ignoring value. [value=({})]", dapsUrl);
             }
         }
     }
