@@ -7,6 +7,9 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Add `daps.whitelisted.url` to `application.properties.`. Allows configuring whitelisted DAPS URLs already at configuration time.
 
+### Fixed
+- Renamed MSSQL reserved keywords in model classes.
+
 ### Changed
 - Code base refactorings and removing of unused code.
 
