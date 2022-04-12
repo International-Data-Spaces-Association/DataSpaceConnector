@@ -55,7 +55,7 @@ public class ApiKey extends Authentication {
      * The key associated to the ApiKey.
      */
     @NonNull
-    @Column(length = AUTH_KEY_LENGTH)
+    @Column(name = "api_key", length = AUTH_KEY_LENGTH)
     private String key;
 
     /**

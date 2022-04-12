@@ -18,6 +18,8 @@ package io.dataspaceconnector.model.auth;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import javax.persistence.Column;
+
 /**
  * This class describes authentication properties.
  */
@@ -28,6 +30,7 @@ public class AuthenticationDesc {
     /**
      * The username for the authentication.
      */
+    @Column(name = "authentication_key")
     private String key;
 
     /**
