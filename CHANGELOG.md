@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - Code base refactorings and removing of unused code.
+- Enabled DAT referring claim vs IDS message issuerConnector validation by default.
 
 ### Dependencies
 - Update com.h3xstream.findsecbugs:findsecbugs-plugin version from 1.11.0 to 1.12.0.
