@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Add `daps.whitelisted.url` to `application.properties.`. Allows configuring whitelisted DAPS URLs already at configuration time.
 
+### Fixed
+- Renamed reserved keywords columns in model classes for newer H2 versions and MSSQL.
+- Removed trivyignore file.
+
 ### Changed
 - Code base refactorings and removing of unused code.
 
@@ -17,6 +21,7 @@ All notable changes to this project will be documented in this file.
 - Update de.fhg.aisec.ids:camel-idscp2 version from 0.6.0 to 0.10.3.
 - Add io.jsonwebtoken:jjwt-impl and :jjwt-api version 0.11.2.
 - Add org.bitbucket.b_c:jose4j version 0.7.11.
+- Add h2 versioning and update to version 2.1.212.
 
 ## [7.1.0] - 2022-04-06
 
