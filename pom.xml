@@ -102,6 +102,7 @@
 		<taglist.version>3.0.0</taglist.version>
 		<dependency-check.version>7.0.4</dependency-check.version>
 		<jxr.version>3.2.0</jxr.version>
+		<h2.version>2.1.212</h2.version>
 
 		<!-- License -->
 		<license_name>Apache License, Version 2.0</license_name>
@@ -431,6 +432,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 
