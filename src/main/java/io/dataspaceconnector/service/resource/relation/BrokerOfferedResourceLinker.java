@@ -16,7 +16,6 @@
 package io.dataspaceconnector.service.resource.relation;
 
 import io.dataspaceconnector.common.exception.ErrorMessage;
-import io.dataspaceconnector.common.exception.ResourceNotFoundException;
 import io.dataspaceconnector.common.util.UUIDUtils;
 import io.dataspaceconnector.common.util.Utils;
 import io.dataspaceconnector.model.broker.Broker;
@@ -28,7 +27,10 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 /**
  * Handles the relation between broker and offered resources.
@@ -44,7 +46,8 @@ public class BrokerOfferedResourceLinker extends OwningRelationService<Broker, O
     }
 
     /**
-     * This method also makes sure the bootstrap ids in entities are converted to the real DSC resource ids
+     * This method also makes sure the bootstrap ids in entities are
+     * converted to the real DSC resource ids.
      * {@inheritDoc}
      */
     @Override
