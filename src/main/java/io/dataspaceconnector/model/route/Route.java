@@ -29,6 +29,7 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -81,6 +82,7 @@ public class Route extends NamedEntity {
      * The last endpoint of the route.
      */
     @OneToOne
+    @JoinColumn(name = "route_end")
     private Endpoint end;
 
     /**
