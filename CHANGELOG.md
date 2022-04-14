@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Renamed reserved keywords columns in model classes for newer H2 versions and MSSQL.
 - Removed trivyignore file.
+- e2e-tests now delete the PVC (PersistentVolumeClaim) and PV (PersistentVolume) during cleanup phase.
 
 ### Changed
 - Code base refactorings and removing of unused code.
@@ -22,6 +23,7 @@ All notable changes to this project will be documented in this file.
 - Add io.jsonwebtoken:jjwt-impl and :jjwt-api version 0.11.2.
 - Add org.bitbucket.b_c:jose4j version 0.7.11.
 - Add h2 versioning and update to version 2.1.212.
+- Add com.microsoft.sqlserver:mssql-jdbc version 10.2.0.jre17.
 
 ## [7.1.0] - 2022-04-06
 
