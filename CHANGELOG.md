@@ -7,11 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Add `daps.whitelisted.url` to `application.properties.`. Allows configuring whitelisted DAPS URLs already at configuration time.
 - Introduction of the setting `referred.check=true/false` in the application.properties. Enables or disables DAT claim referringConnector vs IDS message issuerConnector validation. Disabled by default.
+- Add support for MSSQL besides H2 and PostgreSQL.
 
 ### Fixed
 - Fix bootstrapping with broker registration. The DSC now searches for the correct resource id when bootstrapping.
-
-### Fixed
 - Renamed reserved keywords columns in model classes for newer H2 versions and MSSQL.
 - Removed trivyignore file.
 - e2e-tests now delete the PVC (PersistentVolumeClaim) and PV (PersistentVolume) during cleanup phase.
