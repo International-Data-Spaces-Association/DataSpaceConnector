@@ -6,11 +6,13 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - Add `daps.whitelisted.url` to `application.properties.`. Allows configuring whitelisted DAPS URLs already at configuration time.
+- Introduction of the setting `referred.check=true/false` in the application.properties. Enables or disables DAT claim referringConnector vs IDS message issuerConnector validation. Disabled by default.
 
 ### Changed
 - Code base refactorings and removing of unused code.
 
 ### Dependencies
+- Update springframework version from 5.3.18 to 5.3.19.
 - Update com.h3xstream.findsecbugs:findsecbugs-plugin version from 1.11.0 to 1.12.0.
 - Update org.flywaydb:flyway-core version from 8.5.5 to 8.5.7.
 - Update springdoc version from 1.6.6 to 1.6.7.
