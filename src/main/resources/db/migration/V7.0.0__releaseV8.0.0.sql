@@ -16,4 +16,6 @@ ALTER TABLE public.route
 ALTER TABLE public.contractrule
     RENAME COLUMN value to contractrule_value;
 
+ALTER TABLE public.configuration DROP CONSTRAINT uk_bj5efn7lht054mm1nfr2rscud;
+
 UPDATE public.configuration SET active = false WHERE active != true;
