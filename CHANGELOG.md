@@ -14,7 +14,7 @@ All notable changes to this project will be documented in this file.
 - Renamed reserved keywords columns in model classes for newer H2 versions and MSSQL.
 - Removed trivyignore file.
 - e2e-tests now delete the PVC (PersistentVolumeClaim) and PV (PersistentVolume) during cleanup phase.
-- OpenApi specification: added missing scheme, made field names unique, removed not allowed additional properties.
+- OpenApi specification: made tag names unique, removed not allowed additional properties.
 
 ### Changed
 - Code base refactorings and removing of unused code.
