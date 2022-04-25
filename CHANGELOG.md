@@ -15,18 +15,26 @@ All notable changes to this project will be documented in this file.
 - Removed trivyignore file.
 - e2e-tests now delete the PVC (PersistentVolumeClaim) and PV (PersistentVolume) during cleanup phase.
 - Requesting the same local-data artifact multiple times now updates the data-record in the database for the artifact instead of creating a new data-record.
+- OpenApi specification: made tag names unique, removed not allowed additional properties.
+- Excluded old IAIS http repository from build at top level since no longer accessible but used from transitive dependencies, which could lead to a build timeout. Repository and its artifacts now reachable via https.
 
 ### Changed
 - Code base refactorings and removing of unused code.
 
 ### Dependencies
+- Update com.puppycrawl.tools:checkstyle version from 10.1 to 10.2.
+- Update org.owasp:dependency-check-maven from version 7.0.4 to 7.1.0.
+- Update com.google.protobuf:protobuf-java version from 3.20.0 to 3.20.1.
+- Update org.springframework.boot:spring-boot-starter-parent from 2.6.6 to 2.6.7.
+- Update org.apache.maven.plugins:maven-site-plugin version from 3.11.0 to 3.12.0.
+- Update org.apache.maven.plugins:maven-javadoc-plugin version from 3.3.2 to 3.4.0.
 - Update org.postgresql:postgresql version from 42.3.3 to 42.3.4.
 - Update springframework version from 5.3.18 to 5.3.19.
 - Update com.h3xstream.findsecbugs:findsecbugs-plugin version from 1.11.0 to 1.12.0.
-- Update org.flywaydb:flyway-core version from 8.5.5 to 8.5.8.
-- Update springdoc version from 1.6.6 to 1.6.7.
+- Update org.flywaydb:flyway-core version from 8.5.5 to 8.5.9.
+- Update springdoc version from 1.6.6 to 1.6.8.
 - Update de.fhg.aisec.ids:camel-idscp2 version from 0.6.0 to 0.10.3.
-- Add io.jsonwebtoken:jjwt-impl and :jjwt-api version 0.11.2.
+- Add io.jsonwebtoken:jjwt-impl and :jjwt-api version 0.11.3.
 - Add org.bitbucket.b_c:jose4j version 0.7.11.
 - Add h2 versioning and update to version 2.1.212.
 - Add com.microsoft.sqlserver:mssql-jdbc version 10.2.0.jre17.
