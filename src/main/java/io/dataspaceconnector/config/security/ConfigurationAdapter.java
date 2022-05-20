@@ -91,6 +91,7 @@ public class ConfigurationAdapter {
         return http.build();
     }
 
+    @SuppressFBWarnings("SPRING_CSRF_PROTECTION_DISABLED")
     private void disableSecuritySettings(final HttpSecurity http) throws Exception {
         http.authorizeRequests().anyRequest().permitAll().and().csrf().disable();
         http.headers().xssProtection().disable();
