@@ -52,7 +52,7 @@ public class ConfigurationAdapter {
     private boolean h2Enabled;
 
     /**
-     * Whether the h2 console is enabled.
+     * Whether spring security DSC settings is enabled.
      */
     @Value("${spring.security.enabled}")
     private boolean securityEnabled;
