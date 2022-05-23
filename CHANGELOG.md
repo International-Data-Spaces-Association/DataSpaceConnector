@@ -27,7 +27,7 @@ All notable changes to this project will be documented in this file.
 
 ### Dependencies
 - Update pmd version from 6.44.0 to 6.45.0.
-- Update org.pitest:pitest-maven version from 1.7.5 to 1.7.6.
+- Update org.pitest:pitest-maven version from 1.7.5 to 1.8.0.
 - Update com.puppycrawl.tools:checkstyle version from 10.1 to 10.2.
 - Update org.owasp:dependency-check-maven from version 7.0.4 to 7.1.0.
 - Update com.google.protobuf:protobuf-java version from 3.20.0 to 3.20.1.
@@ -46,6 +46,7 @@ All notable changes to this project will be documented in this file.
 - Update spotbugs version from 4.6.0 to 4.7.0.
 - Update com.github.spotbugs:spotbugs-maven-plugin version from 4.6.0.0 to 4.7.0.0.
 - Update com.fasterxml.jackson.core:jackson-databind version from 2.13.2.2 to 2.13.3.
+- Update org.codehaus.mojo:versions-maven-plugin version from 2.10.0 to 2.11.0.
 - Add io.jsonwebtoken:jjwt-impl and :jjwt-api version 0.11.5.
 - Add org.bitbucket.b_c:jose4j version 0.7.12.
 - Add h2 versioning and update to version 2.1.212.
