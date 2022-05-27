@@ -12,6 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *  Contributors:
+ *       sovity GmbH
+ *
  */
 package io.dataspaceconnector.service.resource.type;
 
@@ -176,7 +180,7 @@ class ArtifactServiceTest {
         when(artifactFactory.create(desc)).thenReturn(artifact);
         when(artifactRepository.saveAndFlush(artifact)).thenReturn(artifact);
         when(dataRepository.saveAndFlush(data)).thenReturn(data);
-        when(dataRepository.getById(dataId)).thenReturn(dataOld);
+        when(dataRepository.findById(dataId)).thenReturn(Optional.of(dataOld));
 
         /* ACT */
         service.create(desc);
@@ -219,7 +223,7 @@ class ArtifactServiceTest {
         when(artifactFactory.update(artifact, desc)).thenReturn(true);
         when(artifactRepository.saveAndFlush(artifact)).thenReturn(artifact);
         when(dataRepository.saveAndFlush(data)).thenReturn(data);
-        when(dataRepository.getById(dataId)).thenReturn(dataOld);
+        when(dataRepository.findById(dataId)).thenReturn(Optional.of(dataOld));
 
         /* ACT */
         service.update(UUID.randomUUID(), desc);
@@ -255,7 +259,7 @@ class ArtifactServiceTest {
         when(artifactFactory.update(artifact, desc)).thenReturn(true);
         when(artifactRepository.saveAndFlush(artifact)).thenReturn(artifact);
         when(dataRepository.saveAndFlush(data)).thenReturn(data);
-        when(dataRepository.getById(dataId)).thenReturn(dataOld);
+        when(dataRepository.findById(dataId)).thenReturn(Optional.of(dataOld));
         doThrow(InvalidEntityException.class)
                 .when(artifactRouteService).createRouteLink(any(), any());
 
@@ -301,7 +305,7 @@ class ArtifactServiceTest {
 
         when(artifactRepository.findById(any())).thenReturn(Optional.of(localArtifact));
         when(artifactFactory.create(any())).thenReturn(localArtifact);
-        when(dataRepository.getById(any())).thenReturn(getLocalData());
+        when(dataRepository.findById(any())).thenReturn(Optional.of(getLocalData()));
         when(dataRetriever.retrieveData(eq(localArtifact), any()))
                 .thenReturn(new ByteArrayInputStream(getLocalData().getValue()));
 
@@ -324,7 +328,7 @@ class ArtifactServiceTest {
 
         when(artifactRepository.findById(any())).thenReturn(Optional.of(localArtifact));
         when(artifactFactory.create(any())).thenReturn(localArtifact);
-        when(dataRepository.getById(any())).thenReturn(getLocalData());
+        when(dataRepository.findById(any())).thenReturn(Optional.of(getLocalData()));
         when(dataRetriever.retrieveData(eq(localArtifact), any()))
                 .thenReturn(new ByteArrayInputStream(getLocalData().getValue()));
 

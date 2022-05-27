@@ -12,6 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *  Contributors:
+ *       sovity GmbH
+ *
  */
 package io.dataspaceconnector.service.resource.type;
 
@@ -188,7 +192,7 @@ public class ArtifactService extends BaseEntityService<Artifact, ArtifactDesc>
             final var tmp = (ArtifactImpl) artifact;
             final var tmpData = tmp.getData();
             Data persistedData = null;
-            Data storedCopy = null;
+            Optional<Data> storedCopy = Optional.empty();
             if (tmpData.getId() == null) {
                 // The data element is new, insert
                 if (tmpData instanceof RemoteData data) {
@@ -197,8 +201,8 @@ public class ArtifactService extends BaseEntityService<Artifact, ArtifactDesc>
                 persistedData = dataRepo.saveAndFlush(tmp.getData());
             } else {
                 // The data element exists already, check if an update is required
-                storedCopy = dataRepo.getById(tmp.getData().getId());
-                if (!storedCopy.equals(tmp.getData())) {
+                storedCopy = dataRepo.findById(tmp.getData().getId());
+                if (storedCopy.isEmpty() || !storedCopy.get().equals(tmp.getData())) {
                     persistedData = dataRepo.saveAndFlush(tmp.getData());
                 }
             }
@@ -217,8 +221,8 @@ public class ArtifactService extends BaseEntityService<Artifact, ArtifactDesc>
                 } catch (InvalidEntityException exception) {
                     // If the route cannot be deployed, revert changes to artifact and data
                     persist(cached);
-                    if (storedCopy != null) {
-                        dataRepo.saveAndFlush(storedCopy);
+                    if (storedCopy.isPresent()) {
+                        dataRepo.saveAndFlush(storedCopy.get());
                     } else {
                         dataRepo.deleteRemoteData(persistedData.getId());
                     }

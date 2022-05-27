@@ -12,6 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *  Contributors:
+ *       sovity GmbH
+ *
  */
 package io.dataspaceconnector.service.message.builder.type.base;
 
@@ -117,11 +121,7 @@ public abstract class AbstractMessageService<D extends MessageDesc> {
         try {
             final var recipient = desc.getRecipient();
             final var header = buildMessage(desc);
-
             final var body = buildMultipartBody(header, payload);
-            if (log.isDebugEnabled()) {
-                log.debug("Built request message. [header=({}), payload=({})]", header, payload);
-            }
 
             return idsHttpService.sendAndCheckDat(body, recipient);
         } catch (SerializeException | ConstraintViolationException | IllegalArgumentException e) {
