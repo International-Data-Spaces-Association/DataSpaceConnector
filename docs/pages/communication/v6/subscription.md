@@ -266,8 +266,8 @@ returned.
 
 ---
 
-For unsubscribing from an object, the endpoint `/api/ids/unsubscribe` can be used. It only expects
-a target URI and automatically send respective IDS messages, as shown below:
+For unsubscribing from an object, the endpoint `/api/ids/unsubscribe` can be used. It expects
+the target and recipient URI and automatically sends the respective IDS messages, as shown below:
 
 ```json
 {
