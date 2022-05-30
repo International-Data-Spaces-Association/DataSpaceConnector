@@ -12,10 +12,14 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *  Contributors:
+ *       sovity GmbH
+ *
  */
 package io.dataspaceconnector.extension.monitoring.update;
 
-import de.fraunhofer.ids.messaging.protocol.http.HttpService;
+import ids.messaging.protocol.http.HttpService;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.dataspaceconnector.config.ConnectorConfig;
 import io.dataspaceconnector.extension.monitoring.update.util.Repository;
@@ -134,7 +138,7 @@ public class UpdateInfoService {
 
         final var release = new HashMap<String, Object>();
         release.put("location", responseObj.get("html_url").toString());
-        release.put("version", latestTag.trim());
+        release.put("version", latestTag.strip());
 
         return release;
     }

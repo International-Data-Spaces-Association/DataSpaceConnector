@@ -12,6 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *  Contributors:
+ *       sovity GmbH
+ *
  */
 package io.dataspaceconnector.service.usagecontrol;
 
@@ -28,7 +32,7 @@ import de.fraunhofer.iais.eis.ProhibitionImpl;
 import de.fraunhofer.iais.eis.Rule;
 import de.fraunhofer.iais.eis.util.ConstraintViolationException;
 import de.fraunhofer.iais.eis.util.Util;
-import de.fraunhofer.ids.messaging.util.IdsMessageUtils;
+import ids.messaging.util.IdsMessageUtils;
 import io.dataspaceconnector.common.ids.policy.ContractUtils;
 import io.dataspaceconnector.common.exception.ErrorMessage;
 import io.dataspaceconnector.common.ids.policy.RuleUtils;

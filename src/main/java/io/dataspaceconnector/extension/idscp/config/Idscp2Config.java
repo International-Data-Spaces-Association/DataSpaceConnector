@@ -12,11 +12,15 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *  Contributors:
+ *       sovity GmbH
+ *
  */
 package io.dataspaceconnector.extension.idscp.config;
 
 import de.fhg.aisec.ids.camel.idscp2.Utils;
-import de.fraunhofer.ids.messaging.core.config.ConfigContainer;
+import ids.messaging.core.config.ConfigContainer;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.apache.camel.Processor;

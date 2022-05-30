@@ -12,6 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *  Contributors:
+ *       sovity GmbH
+ *
  */
 package io.dataspaceconnector;
 
@@ -39,8 +43,7 @@ import java.util.Properties;
 @SpringBootApplication
 @ComponentScan({
         "io.dataspaceconnector",
-        "de.fraunhofer.ids.*",
-        "de.fraunhofer.ids.messaging.*"
+        "ids.*"
 })
 public class ConnectorApplication {
 
@@ -72,8 +75,7 @@ public class ConnectorApplication {
         return new OpenAPI()
                 .components(new Components().addSecuritySchemes("basicAuth", new SecurityScheme()
                         .type(SecurityScheme.Type.HTTP)
-                        .scheme("basic")
-                        .in(SecurityScheme.In.HEADER).name("Authorization")))
+                        .scheme("basic")))
                 .info(new Info()
                         .title(properties.getProperty("title"))
                         .description(properties.getProperty("project_desc"))

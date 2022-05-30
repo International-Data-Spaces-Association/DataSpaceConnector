@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [UNRELEASED - 8.0.0]
 
+### Major Changes
+- Renamed reserved keywords columns in model classes for newer H2 versions and MSSQL. Please enable database migration.
+
 ### Added
 - Add `daps.whitelisted.url` to `application.properties.`. Allows configuring whitelisted DAPS URLs already at configuration time.
 - Introduction of the setting `referred.check=true/false` in the application.properties. Enables or disables DAT claim referringConnector vs IDS message issuerConnector validation. Disabled by default.
@@ -11,22 +14,44 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - Fix bootstrapping with broker registration. The DSC now searches for the correct resource id when bootstrapping.
-- Renamed reserved keywords columns in model classes for newer H2 versions and MSSQL.
 - Removed trivyignore file.
 - e2e-tests now delete the PVC (PersistentVolumeClaim) and PV (PersistentVolume) during cleanup phase.
+- Requesting the same local-data artifact multiple times now updates the data-record in the database for the artifact instead of creating a new data-record.
+- OpenApi specification: made tag names unique, removed not allowed additional properties.
+- Excluded old IAIS http repository from build at top level since no longer accessible but used from transitive dependencies, which could lead to a build timeout. Repository and its artifacts now reachable via https.
 
 ### Changed
 - Code base refactorings and removing of unused code.
+- Replace deprecated JPA calls `getById` with `findById`.
+- Replace deprecated spring security `WebSecurityConfigurerAdapter` with use of `SecurityFilterChain`.
+- Replace deprecated `podAnnotation` `seccomp` with use of `podSecurityContext` `seccompProfile`.
+- Removed debug-logging built request messages, all messages can now be logged via the IDS-Messaging-Services instead.
 
 ### Dependencies
-- Update org.postgresql:postgresql version from 42.3.3 to 42.3.4.
-- Update springframework version from 5.3.18 to 5.3.19.
+- Update ids-messaging-services from 6.1.0 to 7.0.0.
+- Update pmd version from 6.44.0 to 6.46.0.
+- Update org.pitest:pitest-maven version from 1.7.5 to 1.8.0.
+- Update com.puppycrawl.tools:checkstyle version from 10.1 to 10.3.
+- Update org.owasp:dependency-check-maven from version 7.0.4 to 7.1.0.
+- Update com.google.protobuf:protobuf-java version from 3.20.0 to 3.21.1.
+- Update org.springframework.boot:spring-boot-starter-parent from 2.6.6 to 2.6.7.
+- Update org.apache.maven.plugins:maven-site-plugin version from 3.11.0 to 3.12.0.
+- Update org.apache.maven.plugins:maven-javadoc-plugin version from 3.3.2 to 3.4.0.
+- Update org.apache.maven.plugins:maven-project-info-reports-plugin version from 3.2.2 to 3.3.0.
+- Update org.postgresql:postgresql version from 42.3.3 to 42.3.6.
+- Update springframework version from 5.3.18 to 5.3.20.
 - Update com.h3xstream.findsecbugs:findsecbugs-plugin version from 1.11.0 to 1.12.0.
-- Update org.flywaydb:flyway-core version from 8.5.5 to 8.5.8.
-- Update springdoc version from 1.6.6 to 1.6.7.
+- Update org.flywaydb:flyway-core version from 8.5.5 to 8.5.11.
+- Update springdoc version from 1.6.6 to 1.6.9.
 - Update de.fhg.aisec.ids:camel-idscp2 version from 0.6.0 to 0.10.3.
-- Add io.jsonwebtoken:jjwt-impl and :jjwt-api version 0.11.2.
-- Add org.bitbucket.b_c:jose4j version 0.7.11.
+- Update camel version from 3.16.0 to 3.17.0.
+- Update jackson version from 2.13.2 to 2.13.3.
+- Update spotbugs version from 4.6.0 to 4.7.0.
+- Update com.github.spotbugs:spotbugs-maven-plugin version from 4.6.0.0 to 4.7.0.0.
+- Update com.fasterxml.jackson.core:jackson-databind version from 2.13.2.2 to 2.13.3.
+- Update org.codehaus.mojo:versions-maven-plugin version from 2.10.0 to 2.11.0.
+- Add io.jsonwebtoken:jjwt-impl and :jjwt-api version 0.11.5.
+- Add org.bitbucket.b_c:jose4j version 0.7.12.
 - Add h2 versioning and update to version 2.1.212.
 - Add com.microsoft.sqlserver:mssql-jdbc version 10.2.0.jre17.
 

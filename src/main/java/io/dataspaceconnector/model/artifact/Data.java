@@ -12,6 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *  Contributors:
+ *       sovity GmbH
+ *
  */
 package io.dataspaceconnector.model.artifact;
 
@@ -28,6 +32,7 @@ import org.hibernate.annotations.Where;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.Table;
@@ -57,7 +62,7 @@ public class Data implements Serializable {
      * The primary key of the data.
      */
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     @ToString.Exclude
     @SuppressWarnings("PMD.ShortVariable")

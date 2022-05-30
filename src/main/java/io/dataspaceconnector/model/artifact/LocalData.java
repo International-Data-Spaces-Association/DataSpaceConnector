@@ -12,6 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *  Contributors:
+ *       sovity GmbH
+ *
  */
 package io.dataspaceconnector.model.artifact;
 
@@ -46,7 +50,7 @@ public class LocalData extends Data {
      * The data.
      */
     @Lob
-    @Column(name = "localdata_value")
+    @Column(name = "localdata_value", columnDefinition = "TEXT")
     private byte[] value;
 
     /**

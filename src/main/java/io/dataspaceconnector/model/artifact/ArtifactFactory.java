@@ -12,6 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *  Contributors:
+ *       sovity GmbH
+ *
  */
 package io.dataspaceconnector.model.artifact;
 
@@ -26,6 +30,7 @@ import java.net.URI;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.zip.CRC32C;
 
 /**
@@ -113,21 +118,27 @@ public final class ArtifactFactory extends AbstractNamedFactory<Artifact, Artifa
     }
 
     private boolean updateLocalData(final ArtifactImpl artifact, final String value) {
-        final var data = new LocalData();
-        data.setValue(value == null ? null : value.getBytes(StandardCharsets.UTF_8));
+        var isUpdated = false;
 
         final var currentData = artifact.getData();
-        if (currentData instanceof LocalData) {
-            if (!currentData.equals(data)) {
-                setLocalArtifactData(artifact, data);
-                return true;
+        final var newData = value == null ? null : value.getBytes(StandardCharsets.UTF_8);
+
+        if (currentData instanceof LocalData localData) {
+            if (!Arrays.equals(localData.getValue(), newData)) {
+                localData.setValue(newData);
+                setLocalArtifactData(artifact, localData);
+
+                isUpdated = true;
             }
         } else {
-            setLocalArtifactData(artifact, data);
-            return true;
+            final var localData = new LocalData();
+            localData.setValue(newData);
+            setLocalArtifactData(artifact, localData);
+
+            isUpdated = true;
         }
 
-        return false;
+        return isUpdated;
     }
 
     private void setLocalArtifactData(final ArtifactImpl artifact, final LocalData data) {

@@ -12,13 +12,17 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *  Contributors:
+ *       sovity GmbH
+ *
  */
 package io.dataspaceconnector.service.usagecontrol;
 
 import de.fraunhofer.iais.eis.ContractAgreement;
 import de.fraunhofer.iais.eis.Permission;
 import de.fraunhofer.iais.eis.Rule;
-import de.fraunhofer.ids.messaging.core.config.util.ConnectorFingerprintProvider;
+import ids.messaging.core.config.util.ConnectorFingerprintProvider;
 import io.dataspaceconnector.common.exception.PolicyExecutionException;
 import io.dataspaceconnector.common.ids.ConnectorService;
 import io.dataspaceconnector.common.ids.mapping.RdfConverter;

@@ -12,6 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *  Contributors:
+ *       sovity GmbH
+ *
  */
 package io.dataspaceconnector.controller.resource.base.tag;
 
@@ -53,7 +57,7 @@ public final class ResourceName {
     /**
      * Tag name for agreements.
      */
-    public static final String AGREEMENTS = "Contracts";
+    public static final String AGREEMENTS = "Agreements";
 
     /**
      * Tag name for artifacts.

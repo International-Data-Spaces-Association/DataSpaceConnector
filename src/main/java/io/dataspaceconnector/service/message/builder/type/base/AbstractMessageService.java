@@ -12,18 +12,22 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *  Contributors:
+ *       sovity GmbH
+ *
  */
 package io.dataspaceconnector.service.message.builder.type.base;
 
 import de.fraunhofer.iais.eis.Message;
 import de.fraunhofer.iais.eis.RejectionMessage;
 import de.fraunhofer.iais.eis.util.ConstraintViolationException;
-import de.fraunhofer.ids.messaging.common.DeserializeException;
-import de.fraunhofer.ids.messaging.common.SerializeException;
-import de.fraunhofer.ids.messaging.core.daps.ClaimsException;
-import de.fraunhofer.ids.messaging.protocol.http.IdsHttpService;
-import de.fraunhofer.ids.messaging.protocol.http.ShaclValidatorException;
-import de.fraunhofer.ids.messaging.protocol.multipart.parser.MultipartParseException;
+import ids.messaging.common.DeserializeException;
+import ids.messaging.common.SerializeException;
+import ids.messaging.core.daps.ClaimsException;
+import ids.messaging.protocol.http.IdsHttpService;
+import ids.messaging.protocol.http.ShaclValidatorException;
+import ids.messaging.protocol.multipart.parser.MultipartParseException;
 import io.dataspaceconnector.common.exception.ErrorMessage;
 import io.dataspaceconnector.common.exception.MessageEmptyException;
 import io.dataspaceconnector.common.exception.MessageException;
@@ -117,11 +121,7 @@ public abstract class AbstractMessageService<D extends MessageDesc> {
         try {
             final var recipient = desc.getRecipient();
             final var header = buildMessage(desc);
-
             final var body = buildMultipartBody(header, payload);
-            if (log.isDebugEnabled()) {
-                log.debug("Built request message. [header=({}), payload=({})]", header, payload);
-            }
 
             return idsHttpService.sendAndCheckDat(body, recipient);
         } catch (SerializeException | ConstraintViolationException | IllegalArgumentException e) {

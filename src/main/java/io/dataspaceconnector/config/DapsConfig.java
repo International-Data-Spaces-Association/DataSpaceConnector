@@ -12,11 +12,15 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *  Contributors:
+ *       sovity GmbH
+ *
  */
 package io.dataspaceconnector.config;
 
-import de.fraunhofer.ids.messaging.core.daps.DapsVerifier;
-import de.fraunhofer.ids.messaging.core.daps.customvalidation.ValidationRuleResult;
+import ids.messaging.core.daps.DapsVerifier;
+import ids.messaging.core.daps.customvalidation.ValidationRuleResult;
 import io.dataspaceconnector.model.daps.Daps;
 import io.dataspaceconnector.model.daps.DapsDesc;
 import io.dataspaceconnector.model.daps.DapsFactory;
@@ -77,7 +81,7 @@ public class DapsConfig {
             final var dapsFactory = new DapsFactory();
 
             for (final var dapsUrl : whitelistedDaps) {
-                if (!dapsUrl.trim().isEmpty()) {
+                if (!dapsUrl.isBlank()) {
                     persistDaps(dapsFactory, dapsUrl);
                 }
             }
