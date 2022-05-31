@@ -73,7 +73,7 @@ Set environment variables
       name: {{ $name }}
       key: {{ $key }}
 {{- end }}
-{{- if .Values.postgresql.enabled }}
+{{- if or .Values.postgresql.enabled .Values.postgresql.external }}
 - name: SPRING_DATASOURCE_PLATFORM
   valueFrom:
     configMapKeyRef:

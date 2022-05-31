@@ -9,9 +9,15 @@ data:
 {{- range $key, $val := .Values.env.config }}
   {{ $key }}: "{{ $val }}"
 {{- end}}
-{{- if .Values.postgresql.enabled }}
+{{- if .Values.postgresql }}
+  {{- if or .Values.postgresql.enabled .Values.postgresql.external }}
   SPRING_DATASOURCE_PLATFORM: "postgres"
+  {{- if and .Values.postgresql.external .Values.postgresql.postgresqlHost }}
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://{{ .Values.postgresql.postgresqlHost }}:{{ .Values.postgresql.service.port }}/{{ .Values.postgresql.postgresqlDatabase }}"
+  {{- else }}
   SPRING_DATASOURCE_URL: "jdbc:postgresql://{{ .Release.Name }}-postgresql:{{ .Values.postgresql.service.port }}/{{ .Values.postgresql.postgresqlDatabase }}"
+  {{- end }}
   SPRING_DATASOURCE_DRIVERCLASSNAME: "org.postgresql.Driver"
   SPRING_JPA_DATABASEPLATFORM: "org.hibernate.dialect.PostgreSQLDialect"
+  {{- end }}
 {{- end}}
