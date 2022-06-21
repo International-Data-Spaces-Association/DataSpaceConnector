@@ -104,10 +104,8 @@ guide!
 
 The Dataspace Connector is IDS ready and approved for IDS graduation scheme.
 
-<h1>
-    <a href="https://internationaldataspaces.org/ids-ready-open-source-software-dataspace-connector-enables-sovereign-data-exchange/" target="_blank"><img alt="IDS Ready" height="200" src="docs/assets/images/ids_ready_logo.jpg"/></a>
-    <a href="https://github.com/International-Data-Spaces-Association/idsa/blob/main/graduation_scheme/Projects.md" target="_blank"><img alt="IDS Sandbox" src="docs/assets/images/ids_sandbox.png"/></a>
-</h1>
+<a href="https://internationaldataspaces.org/ids-ready-open-source-software-dataspace-connector-enables-sovereign-data-exchange/" target="_blank"><img alt="IDS Ready" height="200" src="docs/assets/images/ids_ready_logo.jpg"/></a>
+<a href="https://github.com/International-Data-Spaces-Association/idsa/blob/main/graduation_scheme/Projects.md" target="_blank"><img alt="IDS Sandbox" src="docs/assets/images/ids_sandbox.png"/></a>
 
 ## Contributing
 
