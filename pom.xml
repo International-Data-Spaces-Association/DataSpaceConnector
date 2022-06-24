@@ -268,6 +268,34 @@
 			</exclusions>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/io.opentelemetry/opentelemetry-api -->
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-api</artifactId>
+			<version>1.15.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.opentelemetry/opentelemetry-sdk -->
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-sdk</artifactId>
+			<version>1.15.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.opentelemetry/opentelemetry-semconv -->
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-semconv</artifactId>
+			<version>1.15.0-alpha</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.opentelemetry/opentelemetry-exporter-jaeger -->
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-exporter-jaeger</artifactId>
+			<version>1.15.0</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core -->
 		<dependency>
 			<groupId>org.flywaydb</groupId>
@@ -401,22 +429,6 @@
 			<version>${mssql.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>io.opentracing.contrib</groupId>
-			<artifactId>opentracing-spring-jaeger-web-starter</artifactId>
-			<version>${jaeger.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>libthrift</artifactId>
-                    <groupId>org.apache.thrift</groupId>
-                </exclusion>
-				<exclusion>
-					<groupId>com.squareup.okhttp3</groupId>
-					<artifactId>okhttp</artifactId>
-				</exclusion>
-            </exclusions>
-        </dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
 		<dependency>
