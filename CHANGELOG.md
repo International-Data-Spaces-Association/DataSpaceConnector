@@ -30,7 +30,7 @@ All notable changes to this project will be documented in this file.
 ### Dependencies
 - Update ids-messaging-services from 6.1.0 to 7.0.0.
 - Update okhttp version from 4.9.3 to 4.10.0.
-- Update pmd version from 6.44.0 to 6.46.0.
+- Update pmd version from 6.44.0 to 6.47.0.
 - Update pmd-plugin version from 3.16.0 to 3.17.0.
 - Update maven-enforcer-plugin version from 3.0.0 to 3.1.0.
 - Update maven-surefire-plugin version from 3.0.0-M6 to 3.0.0-M7.
