@@ -19,6 +19,7 @@ All notable changes to this project will be documented in this file.
 - Requesting the same local-data artifact multiple times now updates the data-record in the database for the artifact instead of creating a new data-record.
 - OpenApi specification: made tag names unique, removed not allowed additional properties.
 - Excluded old IAIS http repository from build at top level since no longer accessible but used from transitive dependencies, which could lead to a build timeout. Repository and its artifacts now reachable via https.
+- Replaced telemetry collection via OpenTracing with OpenTelemetry with Jaeger export.
 
 ### Changed
 - Code base refactorings and removing of unused code.
