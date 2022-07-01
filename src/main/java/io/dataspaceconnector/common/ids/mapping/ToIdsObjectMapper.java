@@ -251,7 +251,7 @@ public final class ToIdsObjectMapper {
      * @param config The internal configuration model.
      * @return PublicKey of the internal configuration model.
      */
-    private static PublicKey getPublicKey(Configuration config) {
+    private static PublicKey getPublicKey(final Configuration config) {
         return new PublicKeyBuilder()
                 ._keyType_(KeyType.RSA)
                 ._keyValue_(config.getPublicKey())
