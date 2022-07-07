@@ -476,3 +476,52 @@ Content-Length: 3782
   }
 }
 ```
+
+### ArtifactRequestMessage
+
+```json
+Content-Disposition: form-data; name="header"
+Content-Length: 1299
+
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:ArtifactRequestMessage",
+  "@id" : "https://w3id.org/idsa/autogen/artifactRequestMessage/d8515ef5-99e8-43de-9304-90e289b2ed3f",
+  "ids:requestedArtifact" : {
+    "@id" : "http://localhost:8080/api/artifacts/21bc7ed1-5579-4ab7-b591-534435e3b2a1"
+  },
+  "ids:modelVersion" : "4.2.7",
+  "ids:issued" : {
+    "@value" : "2022-07-07T08:46:08.860Z",
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+  },
+  "ids:issuerConnector" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:recipientConnector" : [ {
+    "@id" : "http://localhost:8080/api/ids/data"
+  } ],
+  "ids:senderAgent" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:securityToken" : {
+    "@type" : "ids:DynamicAttributeToken",
+    "@id" : "https://w3id.org/idsa/autogen/dynamicAttributeToken/3c5aa9ad-34f3-4e1c-8aac-2e2bc59768da",
+    "ids:tokenValue" : "...",
+    "ids:tokenFormat" : {
+      "@id" : "https://w3id.org/idsa/code/JWT"
+    }
+  },
+  "ids:transferContract" : {
+    "@id" : "http://localhost:8080/api/agreements/7c2b7a6f-1baf-44b2-bbf8-96bc772f4feb"
+  }
+}
+
+Content-Disposition: form-data; name="payload"
+Content-Length: 557
+
+{"headers":{"user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8","accept-language":"de,en-US;q=0.7,en;q=0.3","accept-encoding":"gzip, deflate, br","connection":"keep-alive","cookie":"...","upgrade-insecure-requests":"1","sec-fetch-dest":"document","sec-fetch-mode":"navigate","sec-fetch-site":"none","sec-fetch-user":"?1"},"params":{},"pathVariables":{},"optional":null}
+```
