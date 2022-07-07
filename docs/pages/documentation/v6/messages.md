@@ -177,3 +177,47 @@ Content-Length: 1994
   }
 }
 ```
+
+### LogMessage
+
+```json
+Content-Disposition: form-data; name="header"
+Content-Length: 1081
+
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:LogMessage",
+  "@id" : "https://w3id.org/idsa/autogen/logMessage/e81faecf-d9a9-405c-979a-5314cb125008",
+  "ids:modelVersion" : "4.2.7",
+  "ids:issued" : {
+    "@value" : "2022-07-07T10:16:51.121Z",
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+  },
+  "ids:issuerConnector" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:recipientConnector" : [ {
+    "@id" : "https://ch-ids.aisec.fraunhofer.de/messages/log/eec72aac-ab93-4988-a62e-19b7078a8693"
+  } ],
+  "ids:senderAgent" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:securityToken" : {
+    "@type" : "ids:DynamicAttributeToken",
+    "@id" : "https://w3id.org/idsa/autogen/dynamicAttributeToken/64d37082-e2aa-4881-9e12-0ac9c2532e77",
+    "ids:tokenValue" : "...",
+    "ids:tokenFormat" : {
+      "@id" : "https://w3id.org/idsa/code/JWT"
+    }
+  }
+}
+
+Content-Disposition: form-data; name="payload"; filename="payload"
+Content-Type: application/ld+json; charset=utf-8
+Content-Length: 1234
+
+<message-to-log>
+```
