@@ -845,7 +845,7 @@ Content-Length: 1715
 ```
 
 ### DescriptionResponseMessage
-
+- mandatory fields: `@context` `@type` `@id` `ids:issued` `ids:issuerConnector` `ids:modelVersion` `ids:securityToken` `ids:senderAgent`
 ```json
 Content-Disposition: form-data; name="header"
 Content-Type: text/plain;charset=UTF-8
