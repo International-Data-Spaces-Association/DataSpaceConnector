@@ -699,7 +699,7 @@ Content-Length: 109
 
 ## Response Message
 ### ArtifactResponseMessage
-
+- mandatory fields: `@context` `@type` `@id` `ids:correlationMessage` `ids:issued` `ids:issuerConnector` `ids:modelVersion` `ids:securityToken` `ids:senderAgent`
 ```json
 Content-Disposition: form-data; name="header"
 Content-Type: text/plain;charset=UTF-8
