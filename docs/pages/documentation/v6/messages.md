@@ -93,3 +93,87 @@ Content-Disposition: form-data; name="payload"
 Content-Length: 0
 ```
 
+### ConnectorUpdateMessage
+
+```json
+Content-Disposition: form-data; name="header"
+Content-Length: 1130
+
+{
+  "@context" : {
+  "ids" : "https://w3id.org/idsa/core/",
+  "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:ConnectorUpdateMessage",
+  "@id" : "https://w3id.org/idsa/autogen/connectorUpdateMessage/38e8a1e1-937a-42b5-bb5b-984e4fa68c0b",
+  "ids:affectedConnector" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:issuerConnector" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:securityToken" : {
+    "@type" : "ids:DynamicAttributeToken",
+    "@id" : "https://w3id.org/idsa/autogen/dynamicAttributeToken/ccc80ff6-54e9-4381-b130-d47bb973c9f7",
+    "ids:tokenFormat" : {
+      "@id" : "https://w3id.org/idsa/code/JWT"
+    },
+    "ids:tokenValue" : "..."
+  },
+  "ids:modelVersion" : "4.2.7",
+  "ids:senderAgent" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:issued" : {
+    "@value" : "2022-07-07T08:25:11.702+02:00",
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+  }
+}
+
+Content-Disposition: form-data; name="payload"
+Content-Length: 1994
+
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:BaseConnector",
+  "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea",
+  "ids:publicKey" : {
+    "@type" : "ids:PublicKey",
+    "@id" : "https://w3id.org/idsa/autogen/publicKey/78eb73a3-3a2a-4626-a0ff-631ab50a00f9",
+    "ids:keyType" : {
+      "@id" : "https://w3id.org/idsa/code/RSA"
+    },
+    "ids:keyValue" : "..."
+  },
+  "ids:version" : "8.0.0",
+  "ids:description" : [ {
+    "@value" : "IDS Connector reference implementation",
+    "@type" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "ids:hasDefaultEndpoint" : {
+    "@type" : "ids:ConnectorEndpoint",
+    "@id" : "https://w3id.org/idsa/autogen/connectorEndpoint/e5e2ab04-633a-44b9-87d9-a097ae6da3cf",
+    "ids:accessURL" : {
+      "@id" : "https://localhost:8080/api/ids/data"
+    }
+  },
+  "ids:outboundModelVersion" : "4.2.7",
+  "ids:maintainer" : {
+    "@id" : "https://sovity.de/"
+  },
+  "ids:inboundModelVersion" : [ "4.2.6", "4.2.7", "4.2.0", "4.2.1", "4.1.2", "4.0.0", "4.1.0", "4.2.4", "4.2.5", "4.2.2", "4.2.3" ],
+  "ids:title" : [ {
+    "@value" : "Dataspace Connector",
+    "@type" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "ids:securityProfile" : {
+    "@id" : "https://w3id.org/idsa/code/BASE_SECURITY_PROFILE"
+  },
+  "ids:curator" : {
+    "@id" : "https://example.org/"
+  }
+}
+```
