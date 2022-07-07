@@ -934,3 +934,51 @@ Content-Length: 2112
   "ids:outboundModelVersion" : "4.2.7"
 }
 ```
+
+### RejectionMessage
+
+```json
+ontent-Disposition: form-data; name="header"
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 1218
+
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:RejectionMessage",
+  "@id" : "https://w3id.org/idsa/autogen/rejectionMessage/75d823a2-aff7-451a-8cc3-85f645faecf4",
+  "ids:rejectionReason" : {
+    "@id" : "https://w3id.org/idsa/code/MESSAGE_TYPE_NOT_SUPPORTED"
+  },
+  "ids:issuerConnector" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:securityToken" : {
+    "@type" : "ids:DynamicAttributeToken",
+    "@id" : "https://w3id.org/idsa/autogen/dynamicAttributeToken/37e0f550-e235-4a4f-870e-c28925054f3c",
+    "ids:tokenFormat" : {
+      "@id" : "https://w3id.org/idsa/code/JWT"
+    },
+    "ids:tokenValue" : "..."
+  },
+  "ids:modelVersion" : "4.2.7",
+  "ids:senderAgent" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:issued" : {
+    "@value" : "2022-07-07T09:11:20.151+02:00",
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+  },
+  "ids:correlationMessage" : {
+    "@id" : "https://w3id.org/idsa/autogen/queryMessage/97c17e76-14b1-4dbb-a544-0fb0cedf82aa"
+  }
+}
+
+Content-Disposition: form-data; name="payload"
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 47
+
+No handler for provided message type was found!
+```
