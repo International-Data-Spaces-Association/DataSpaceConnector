@@ -53,7 +53,7 @@ processing incoming messages.
 ## Examples
 ## Notification Messages
 ### ConnectorUnavailableMessage
-
+- mandatory fields: `@context` `@type` `@id` `ids:affectedConnector` `ids:issuerConnector` `ids:securityToken` `ids:modelVersion` `ids:senderAgent` `ids:issued`
 ```json
 Content-Disposition: form-data; name="header"
 Content-Length: 1140
