@@ -525,3 +525,81 @@ Content-Length: 557
 
 {"headers":{"user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8","accept-language":"de,en-US;q=0.7,en;q=0.3","accept-encoding":"gzip, deflate, br","connection":"keep-alive","cookie":"...","upgrade-insecure-requests":"1","sec-fetch-dest":"document","sec-fetch-mode":"navigate","sec-fetch-site":"none","sec-fetch-user":"?1"},"params":{},"pathVariables":{},"optional":null}
 ```
+
+### ContractRequestMessage
+
+```json
+Content-Disposition: form-data; name="header"
+Content-Length: 1186
+
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:ContractRequestMessage",
+  "@id" : "https://w3id.org/idsa/autogen/contractRequestMessage/0bc75b68-f8b3-4234-b852-3b289c03175f",
+  "ids:modelVersion" : "4.2.7",
+  "ids:issued" : {
+    "@value" : "2022-07-07T08:45:54.640Z",
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+  },
+  "ids:issuerConnector" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:recipientConnector" : [ {
+    "@id" : "http://localhost:8080/api/ids/data"
+  } ],
+  "ids:senderAgent" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:securityToken" : {
+    "@type" : "ids:DynamicAttributeToken",
+    "@id" : "https://w3id.org/idsa/autogen/dynamicAttributeToken/174343dc-b37a-43b4-acf7-1fc6204352dc",
+    "ids:tokenValue" : "...",
+    "ids:tokenFormat" : {
+      "@id" : "https://w3id.org/idsa/code/JWT"
+    }
+  },
+  "ids:transferContract" : {
+    "@id" : "https://w3id.org/idsa/autogen/contractRequest/7033417a-e979-4d31-a3a2-cf7e891f2425"
+  }
+}
+
+Content-Disposition: form-data; name="payload"
+Content-Length: 1093
+
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:ContractRequest",
+  "@id" : "https://w3id.org/idsa/autogen/contractRequest/7033417a-e979-4d31-a3a2-cf7e891f2425",
+  "ids:permission" : [ {
+    "@type" : "ids:Permission",
+    "@id" : "http://localhost:8080/api/rules/3c31dfd7-f498-423f-8787-1ac9f4b86c45",
+    "ids:target" : {
+      "@id" : "http://localhost:8080/api/artifacts/21bc7ed1-5579-4ab7-b591-534435e3b2a1"
+    },
+    "ids:title" : [ {
+      "@value" : "",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    } ],
+    "ids:description" : [ {
+      "@value" : "",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    } ],
+    "ids:assignee" : [ {
+      "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+    } ],
+    "ids:action" : [ {
+      "@id" : "https://w3id.org/idsa/code/USE"
+    } ],
+    "type" : "PROVIDE_ACCESS"
+  } ],
+  "ids:consumer" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  }
+}
+```
