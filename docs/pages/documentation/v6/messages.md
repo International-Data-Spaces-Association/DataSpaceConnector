@@ -275,7 +275,6 @@ Received contract agreement message.
 ```json
 Content-Disposition: form-data; name="header"
 Content-Length: 1092
-connector-container
 {
   "@context" : {
     "ids" : "https://w3id.org/idsa/core/",
@@ -309,5 +308,171 @@ connector-container
 
 Content-Disposition: form-data; name="payload"
 Content-Length: 0
+```
 
+### ResourceUpdateMessage
+
+```json
+Content-Disposition: form-data; name="header"
+Content-Length: 1082
+
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:ResourceUpdateMessage",
+  "@id" : "https://w3id.org/idsa/autogen/resourceUpdateMessage/ee841bcf-a25c-4d1d-882b-ac21a0d45549",
+  "ids:affectedResource" : {
+    "@id" : "http://localhost:8080/api/offers/d870252b-c4c9-4b61-8957-b1696995c621"
+  },
+  "ids:modelVersion" : "4.2.7",
+  "ids:issued" : {
+    "@value" : "2022-07-07T08:33:06.494Z",
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+  },
+  "ids:issuerConnector" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:senderAgent" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:securityToken" : {
+    "@type" : "ids:DynamicAttributeToken",
+    "@id" : "https://w3id.org/idsa/autogen/dynamicAttributeToken/cb49028f-c90a-4026-9a4d-4e0be384e2d0",
+    "ids:tokenValue" : "...",
+    "ids:tokenFormat" : {
+      "@id" : "https://w3id.org/idsa/code/JWT"
+    }
+  }
+}
+
+Content-Disposition: form-data; name="payload"
+Content-Length: 3782
+
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:Resource",
+  "@id" : "http://localhost:8080/api/offers/d870252b-c4c9-4b61-8957-b1696995c621",
+  "ids:version" : "1",
+  "ids:language" : [ {
+    "@id" : "https://w3id.org/idsa/code/DE"
+  } ],
+  "ids:keyword" : [ {
+    "@value" : "abc",
+    "@language" : "DE"
+  } ],
+  "ids:title" : [ {
+    "@value" : "TestTitel",
+    "@language" : "DE"
+  } ],
+  "ids:description" : [ {
+    "@value" : "abc",
+    "@language" : "DE"
+  } ],
+  "ids:representation" : [ {
+    "@type" : "ids:Representation",
+    "@id" : "http://localhost:8080/api/representations/ca9a4ff5-4f6f-4d05-b1a2-6a29cb256596",
+    "ids:mediaType" : {
+      "@type" : "ids:IANAMediaType",
+      "@id" : "https://w3id.org/idsa/autogen/iANAMediaType/308bdf03-1f1d-4853-aa7b-6a6cb9be0482",
+      "ids:filenameExtension" : "xml"
+    },
+    "ids:language" : {
+      "@id" : "https://w3id.org/idsa/code/DE"
+    },
+    "ids:instance" : [ {
+      "@type" : "ids:Artifact",
+      "@id" : "http://localhost:8080/api/artifacts/21bc7ed1-5579-4ab7-b591-534435e3b2a1",
+      "ids:fileName" : "dsc-checkstyle.xml",
+      "ids:creationDate" : {
+        "@value" : "2022-07-07T08:10:18.250Z",
+        "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+      },
+      "ids:byteSize" : 7720,
+      "ids:checkSum" : "795006632"
+    } ],
+    "ids:created" : {
+      "@value" : "2022-07-07T08:10:18.096Z",
+      "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+    },
+    "ids:modified" : {
+      "@value" : "2022-07-07T08:10:18.096Z",
+      "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+    },
+    "ids:representationStandard" : {
+      "@id" : ""
+    }
+  } ],
+  "ids:paymentModality" : {
+    "@id" : "https://w3id.org/idsa/code/FREE"
+  },
+  "ids:publisher" : {
+    "@id" : "http://example.org"
+  },
+  "ids:sovereign" : {
+    "@id" : ""
+  },
+  "ids:standardLicense" : {
+    "@id" : "http://example.org"
+  },
+  "ids:resourceEndpoint" : [ {
+    "@type" : "ids:ConnectorEndpoint",
+    "@id" : "https://w3id.org/idsa/autogen/connectorEndpoint/e9a65216-5973-4365-bf4a-030e204249a7",
+    "ids:endpointDocumentation" : [ {
+      "@id" : ""
+    } ],
+    "ids:accessURL" : {
+      "@id" : "http://localhost:8080/api/offers/d870252b-c4c9-4b61-8957-b1696995c621"
+    }
+  } ],
+  "ids:contractOffer" : [ {
+    "@type" : "ids:ContractOffer",
+    "@id" : "http://localhost:8080/api/contracts/be023918-a3f4-4e36-bc7c-9158edd1bf46",
+    "ids:provider" : {
+      "@id" : ""
+    },
+    "ids:permission" : [ {
+      "@type" : "ids:Permission",
+      "@id" : "http://localhost:8080/api/rules/3c31dfd7-f498-423f-8787-1ac9f4b86c45",
+      "ids:title" : [ {
+        "@value" : "",
+        "@type" : "http://www.w3.org/2001/XMLSchema#string"
+      } ],
+      "ids:description" : [ {
+        "@value" : "",
+        "@type" : "http://www.w3.org/2001/XMLSchema#string"
+      } ],
+      "ids:action" : [ {
+        "@id" : "https://w3id.org/idsa/code/USE"
+      } ]
+    } ],
+    "ids:contractEnd" : {
+      "@value" : "2022-07-31T00:00:00.000Z",
+      "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+    },
+    "ids:consumer" : {
+      "@id" : ""
+    },
+    "ids:contractStart" : {
+      "@value" : "2022-07-01T00:00:00.000Z",
+      "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+    },
+    "ids:contractDate" : {
+      "@value" : "2022-07-07T08:33:06.480Z",
+      "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+    }
+  } ],
+  "ids:created" : {
+    "@value" : "2022-07-07T08:10:17.553Z",
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+  },
+  "ids:modified" : {
+    "@value" : "2022-07-07T08:10:17.553Z",
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+  }
+}
 ```
