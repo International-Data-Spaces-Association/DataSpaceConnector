@@ -269,3 +269,45 @@ Content-Length: 36
 
 Received contract agreement message.
 ```
+
+### ResourceUnavailableMessage
+
+```json
+Content-Disposition: form-data; name="header"
+Content-Length: 1092
+connector-container
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:ResourceUnavailableMessage",
+  "@id" : "https://w3id.org/idsa/autogen/resourceUnavailableMessage/1ed79ee0-a0ba-4bd1-a7b3-4eddb3f9b92c",
+  "ids:affectedResource" : {
+    "@id" : "http://localhost:8080/api/offers/d870252b-c4c9-4b61-8957-b1696995c621"
+  },
+  "ids:modelVersion" : "4.2.7",
+  "ids:issued" : {
+    "@value" : "2022-07-07T08:36:39.439Z",
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+  },
+  "ids:issuerConnector" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:senderAgent" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:securityToken" : {
+    "@type" : "ids:DynamicAttributeToken",
+    "@id" : "https://w3id.org/idsa/autogen/dynamicAttributeToken/2e6a8a7b-457a-4375-82c5-b5be669baecd",
+    "ids:tokenValue" : "...",
+    "ids:tokenFormat" : {
+      "@id" : "https://w3id.org/idsa/code/JWT"
+    }
+  }
+}
+
+Content-Disposition: form-data; name="payload"
+Content-Length: 0
+
+```
