@@ -51,7 +51,7 @@ processing incoming messages.
 ![Automated IDS Messaging Sequence](../../../assets/images/diagram/messaging_sequence.png)
 
 ## Examples
-
+## Notification Messages
 ### ConnectorUnavailableMessage
 
 ```json
@@ -477,6 +477,7 @@ Content-Length: 3782
 }
 ```
 
+## Request Message
 ### ArtifactRequestMessage
 
 ```json
@@ -696,6 +697,7 @@ Content-Length: 109
 "SELECT ?subject ?predicate ?object\nFROM <urn:x-arq:UnionGraph>\nWHERE {\n  ?subject ?predicate ?object\n};"
 ```
 
+## Response Message
 ### ArtifactResponseMessage
 
 ```json
@@ -983,6 +985,7 @@ Content-Length: 47
 No handler for provided message type was found!
 ```
 
+## Custom Messages
 ### SubscriptionMessage (custom RequestMessage)
 
 ```json
