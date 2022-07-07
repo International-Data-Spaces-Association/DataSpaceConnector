@@ -603,3 +603,45 @@ Content-Length: 1093
   }
 }
 ```
+
+### DescriptionRequestMessage
+
+```json
+Content-Disposition: form-data; name="header"
+Content-Length: 1119
+
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:DescriptionRequestMessage",
+  "@id" : "https://w3id.org/idsa/autogen/descriptionRequestMessage/5a359082-000c-4904-8759-ef62b40c6731",
+  "ids:issuerConnector" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:securityToken" : {
+    "@type" : "ids:DynamicAttributeToken",
+    "@id" : "https://w3id.org/idsa/autogen/dynamicAttributeToken/7816c63b-ab7a-4d70-b406-bed042e3c847",
+    "ids:tokenFormat" : {
+      "@id" : "https://w3id.org/idsa/code/JWT"
+    },
+    "ids:tokenValue" : "..."
+  },
+  "ids:modelVersion" : "4.2.7",
+  "ids:senderAgent" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:issued" : {
+    "@value" : "2022-07-07T08:17:26.674+02:00",
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+  },
+  "ids:recipientConnector" : [ {
+    "@id" : "https://localhost:8080/api/ids/data"
+  } ],
+  "ids:depth" : "10"
+}
+
+Content-Disposition: form-data; name="payload"
+Content-Length: 0
+```
