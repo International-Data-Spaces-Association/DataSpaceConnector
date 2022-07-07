@@ -221,3 +221,51 @@ Content-Length: 1234
 
 <message-to-log>
 ```
+
+### MessageProcessedNotificationMessage
+
+```json
+Content-Disposition: form-data; name="header"
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 1269
+
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:MessageProcessedNotificationMessage",
+  "@id" : "https://w3id.org/idsa/autogen/messageProcessedNotificationMessage/71ff549c-829a-438d-a6e8-18158c36bfdb",
+  "ids:modelVersion" : "4.2.7",
+  "ids:issued" : {
+    "@value" : "2022-07-07T08:45:54.823Z",
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+  },
+  "ids:correlationMessage" : {
+    "@id" : "https://w3id.org/idsa/autogen/contractAgreementMessage/13ca5af6-b111-4ef4-bc76-d00f5e61e4c9"
+  },
+  "ids:issuerConnector" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:recipientConnector" : [ {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  } ],
+  "ids:senderAgent" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:securityToken" : {
+    "@type" : "ids:DynamicAttributeToken",
+    "@id" : "https://w3id.org/idsa/autogen/dynamicAttributeToken/7affbc35-d7e1-4f50-93ea-957ad9b2bb4e",
+    "ids:tokenValue" : "...",
+    "ids:tokenFormat" : {
+      "@id" : "https://w3id.org/idsa/code/JWT"
+    }
+  }
+}
+
+Content-Disposition: form-data; name="payload"
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 36
+
+Received contract agreement message.
+```
