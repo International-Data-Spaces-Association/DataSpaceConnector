@@ -311,7 +311,7 @@ Content-Length: 0
 ```
 
 ### ResourceUpdateMessage
-
+- mandatory fields: `@context` `@type` `@id` `ids:affectedResource` `ids:issued` `ids:issuerConnector` `ids:modelVersion` `ids:securityToken` `ids:senderAgent`
 ```json
 Content-Disposition: form-data; name="header"
 Content-Length: 1082
