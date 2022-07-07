@@ -841,3 +841,96 @@ Content-Length: 1715
   }
 }
 ```
+
+### DescriptionResponseMessage
+
+```json
+Content-Disposition: form-data; name="header"
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 1252
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:DescriptionResponseMessage",
+  "@id" : "https://w3id.org/idsa/autogen/descriptionResponseMessage/3d946ef3-6642-4119-9c28-04e4326834ee",
+  "ids:modelVersion" : "4.2.7",
+  "ids:issued" : {
+    "@value" : "2022-07-07T08:38:56.901Z",
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+  },
+  "ids:correlationMessage" : {
+    "@id" : "https://w3id.org/idsa/autogen/descriptionRequestMessage/a7afb583-fbf5-4e41-9b77-bb9fc81e8359"
+  },
+  "ids:issuerConnector" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:recipientConnector" : [ {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  } ],
+  "ids:senderAgent" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:securityToken" : {
+    "@type" : "ids:DynamicAttributeToken",
+    "@id" : "https://w3id.org/idsa/autogen/dynamicAttributeToken/f56d76a0-85d8-41ce-91c0-48cd4bb28671",
+    "ids:tokenValue" : "...",
+    "ids:tokenFormat" : {
+      "@id" : "https://w3id.org/idsa/code/JWT"
+    }
+  }
+}
+
+Content-Disposition: form-data; name="payload"
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 2112
+
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:BaseConnector",
+  "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea",
+  "ids:version" : "8.0.0",
+  "ids:publicKey" : {
+    "@type" : "ids:PublicKey",
+    "@id" : "https://w3id.org/idsa/autogen/publicKey/21a9a8da-47ab-4666-87c9-e29d8cd7cf68",
+    "ids:keyType" : {
+      "@id" : "https://w3id.org/idsa/code/RSA"
+    },
+    "ids:keyValue" : "TUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUF1dzZtRnJkZmxYWlRKZ0ZPQTVzbURYQzA5U21wSldvR3B5RVJaTkV5MzFwS2RzUkdoVGlwUjI3ajlpcm1tcWlodjdnSWd6Q254NmtJUk5HSTJ1MG9GUTVGZ3ZPMXh4Z3pjaWhkcEYwQ2hlT2Y5SU5naXNQa3E1aGo4QWUvRFlYa3ZqaFE2YzZhay9aWWZqME5wcXlFUGNKNU1MUm1ZR2V4TWFNWm1UYnFESnZKbDVKRzMrYkUzWWEyMWhUWllPeGlTaWNwZkZnSjMwa241YVVJQXRkMDVJWnk3ejFzRGlWTHRUWGxMZmUvWlFDNHBuakZ0cyt0YzEyc1g5aWhJbW5Da2QwV3Z6M0NUWm95QlNzYzFUZEJrYjltMEM1dHZnMGZRUDRRZ0YvekgyUW9abm5ySTUydUFaOE1vbVd0WTJsdDNEMGtrcFI2OXBmVkRKN3kzdk4vZXdJREFRQUI="
+  },
+  "ids:title" : [ {
+    "@value" : "Dataspace Connector",
+    "@type" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "ids:description" : [ {
+    "@value" : "IDS Connector reference implementation",
+    "@type" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "ids:hasDefaultEndpoint" : {
+    "@type" : "ids:ConnectorEndpoint",
+    "@id" : "https://w3id.org/idsa/autogen/connectorEndpoint/4d34d882-0986-4135-b1b6-239a3a74253f",
+    "ids:accessURL" : {
+      "@id" : "https://localhost:8080/api/ids/data"
+    }
+  },
+  "ids:resourceCatalog" : [ {
+    "@type" : "ids:ResourceCatalog",
+    "@id" : "http://localhost:8080/api/catalogs/44789a95-796c-4cde-a651-8a0fed0b2b63"
+  } ],
+  "ids:securityProfile" : {
+    "@id" : "https://w3id.org/idsa/code/BASE_SECURITY_PROFILE"
+  },
+  "ids:maintainer" : {
+    "@id" : "https://sovity.de/"
+  },
+  "ids:curator" : {
+    "@id" : "https://example.org/"
+  },
+  "ids:inboundModelVersion" : [ "4.2.6", "4.2.7", "4.2.0", "4.2.1", "4.1.2", "4.0.0", "4.1.0", "4.2.4", "4.2.5", "4.2.2", "4.2.3" ],
+  "ids:outboundModelVersion" : "4.2.7"
+}
+```
