@@ -695,3 +695,54 @@ Content-Length: 109
 
 "SELECT ?subject ?predicate ?object\nFROM <urn:x-arq:UnionGraph>\nWHERE {\n  ?subject ?predicate ?object\n};"
 ```
+
+### ArtifactResponseMessage
+
+```json
+Content-Disposition: form-data; name="header"
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 1365
+
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:ArtifactResponseMessage",
+  "@id" : "https://w3id.org/idsa/autogen/artifactResponseMessage/035077a5-f9d7-4bfc-819f-269754f29f19",
+  "ids:modelVersion" : "4.2.7",
+  "ids:issued" : {
+    "@value" : "2022-07-07T08:46:08.902Z",
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+  },
+  "ids:correlationMessage" : {
+    "@id" : "https://w3id.org/idsa/autogen/artifactRequestMessage/d8515ef5-99e8-43de-9304-90e289b2ed3f"
+  },
+  "ids:issuerConnector" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:recipientConnector" : [ {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  } ],
+  "ids:senderAgent" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:securityToken" : {
+    "@type" : "ids:DynamicAttributeToken",
+    "@id" : "https://w3id.org/idsa/autogen/dynamicAttributeToken/674762e1-e8bd-4c61-bd65-c467b8b2927d",
+    "ids:tokenValue" : "...",
+    "ids:tokenFormat" : {
+      "@id" : "https://w3id.org/idsa/code/JWT"
+    }
+  },
+  "ids:transferContract" : {
+    "@id" : "http://localhost:8080/api/agreements/7c2b7a6f-1baf-44b2-bbf8-96bc772f4feb"
+  }
+}
+
+Content-Disposition: form-data; name="payload"
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 1234
+
+<Base64-encoded artifact-data to be transferred>
+```
