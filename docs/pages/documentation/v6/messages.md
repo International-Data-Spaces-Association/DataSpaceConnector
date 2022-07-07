@@ -179,7 +179,7 @@ Content-Length: 1994
 ```
 
 ### LogMessage
-
+- mandatory fields: `@context` `@type` `@id` `ids:issued` `ids:issuerConnector` `ids:modelVersion` `ids:securityToken` `ids:senderAgent`
 ```json
 Content-Disposition: form-data; name="header"
 Content-Length: 1081
