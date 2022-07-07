@@ -982,3 +982,49 @@ Content-Length: 47
 
 No handler for provided message type was found!
 ```
+
+### SubscriptionMessage (custom RequestMessage)
+
+```json
+Content-Disposition: form-data; name="header"
+Content-Length: 1147
+
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:RequestMessage",
+  "@id" : "https://w3id.org/idsa/autogen/requestMessage/36f79dcc-1d3e-45e4-9ddb-c3096b431573",
+  "ids:modelVersion" : "4.2.7",
+  "ids:issued" : {
+    "@value" : "2022-07-07T09:50:06.995Z",
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+  },
+  "ids:issuerConnector" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:recipientConnector" : [ {
+    "@id" : "http://localhost:8080/api/ids/data"
+  } ],
+  "ids:senderAgent" : {
+    "@id" : "https://w3id.org/idsa/autogen/baseConnector/7b934432-a85e-41c5-9f65-669219dde4ea"
+  },
+  "ids:securityToken" : {
+    "@type" : "ids:DynamicAttributeToken",
+    "@id" : "https://w3id.org/idsa/autogen/dynamicAttributeToken/0b96575d-a63f-4805-940b-e2b3fb3bb748",
+    "ids:tokenValue" : "...",
+    "ids:tokenFormat" : {
+      "@id" : "https://w3id.org/idsa/code/JWT"
+    }
+  },
+  "ids:target" : {
+    "@id" : "http://localhost:8080/api/offers/d870252b-c4c9-4b61-8957-b1696995c621"
+  }
+}
+
+Content-Disposition: form-data; name="payload"
+Content-Length: 251
+
+{"title":"My Title","description":"My description","target":"http://localhost:8080/api/offers/d870252b-c4c9-4b61-8957-b1696995c621","location":"https://localhost:8080/api/ids/data","subscriber":"https://localhost:8080/api/ids/data","pushData":false,"idsProtocol":false}
+```
