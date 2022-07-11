@@ -122,7 +122,7 @@ public class AppDesc extends NamedDescription {
     private URI distributionService;
 
     /**
-     * "Runtime environment of a data app, e.g., software (or hardware) required to run the app.
+     * Runtime environment of a data app, e.g., software (or hardware) required to run the app.
      */
     private String runtimeEnvironment;
 

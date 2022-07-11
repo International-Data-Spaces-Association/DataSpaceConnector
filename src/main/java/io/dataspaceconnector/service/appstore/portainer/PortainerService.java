@@ -607,7 +607,7 @@ public class PortainerService {
     /**
      * Pull image from registry.
      *
-     * @param appStoreTemplate The template provided by the AppStore decribing 1 App.
+     * @param appStoreTemplate The template provided by the AppStore describing 1 App.
      * @return Response of portainer.
      * @throws IOException If an error occurs while connection to portainer.
      */
