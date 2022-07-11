@@ -16,17 +16,17 @@
 package io.dataspaceconnector.config;
 
 import de.fraunhofer.iais.eis.ConfigurationModel;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import ids.messaging.core.config.ConfigProducerInterceptorException;
 import ids.messaging.core.config.ConfigProperties;
 import ids.messaging.core.config.ConfigUpdateException;
 import ids.messaging.core.config.PreConfigProducerInterceptor;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.dataspaceconnector.common.ids.DeserializationService;
 import io.dataspaceconnector.common.ids.mapping.FromIdsObjectMapper;
 import io.dataspaceconnector.service.resource.ids.builder.IdsConfigModelBuilder;
 import io.dataspaceconnector.service.resource.type.ConfigurationService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -42,7 +42,7 @@ import java.nio.file.Paths;
  * startup configuration is loaded.
  */
 @Configuration
-@Slf4j
+@Log4j2
 @RequiredArgsConstructor
 @Transactional
 public class PreConfigInterceptor implements PreConfigProducerInterceptor {
@@ -97,7 +97,8 @@ public class PreConfigInterceptor implements PreConfigProducerInterceptor {
     }
 
     private ConfigurationModel loadConfigFromDb() throws ConfigProducerInterceptorException {
-        var activeConfig = configurationSvc.findActiveConfig().get();
+        var activeConfig = configurationSvc.findActiveConfig().orElseThrow(
+                () -> new ConfigProducerInterceptorException("Could not find Active Config"));
         var configModel = configModelBuilder.create(activeConfig);
         try {
             configurationSvc.swapActiveConfig(activeConfig.getId(), true);
@@ -157,7 +158,7 @@ public class PreConfigInterceptor implements PreConfigProducerInterceptor {
         }
     }
 
-    @SuppressFBWarnings(value = { "PATH_TRAVERSAL_IN", "REC_CATCH_EXCEPTION" },
+    @SuppressFBWarnings(value = {"PATH_TRAVERSAL_IN", "REC_CATCH_EXCEPTION"},
             justification = "Path should be set by user.")
     private String getClassPathConfig(final ConfigProperties properties) {
         if (log.isInfoEnabled()) {
