@@ -23,7 +23,10 @@ import io.dataspaceconnector.common.routing.dataretrieval.Response;
 import io.dataspaceconnector.common.exception.ErrorMessage;
 import io.dataspaceconnector.common.exception.NotImplemented;
 import io.dataspaceconnector.common.util.Utils;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import okhttp3.Request;
@@ -169,7 +172,7 @@ public class HttpService implements DataRetrievalService {
         if (args.getParams() != null) {
             for (final var key : args.getParams().keySet()) {
                 // makes sure the passed queries do not have the same key as queries in the target
-                if(!queryKeys.contains(key)) {
+                if (!queryKeys.contains(key)) {
                     urlBuilder.addQueryParameter(key, args.getParams().get(key));
                 }
             }
