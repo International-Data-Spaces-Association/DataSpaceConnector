@@ -20,10 +20,7 @@ import io.dataspaceconnector.common.routing.dataretrieval.Response;
 import io.dataspaceconnector.common.exception.ErrorMessage;
 import io.dataspaceconnector.common.exception.NotImplemented;
 import io.dataspaceconnector.common.util.Utils;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import okhttp3.Request;
@@ -37,6 +34,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * This class builds up http or httpS endpoint connections and sends GET requests.
@@ -148,7 +146,9 @@ public class HttpService implements DataRetrievalService {
     }
 
     /**
-     * Perform a get request.
+     * Perform a get request with query parameters (if given).
+     * If a query parameter is already found in the target URL it is ignored,
+     * so that the basis url of the target can not be bypassed.
      *
      * @param target The recipient of the request.
      * @param args   The request arguments.
@@ -161,10 +161,15 @@ public class HttpService implements DataRetrievalService {
         Utils.requireNonNull(args, ErrorMessage.HTTP_ARGS_NULL);
 
         final var urlBuilder = createUrlBuilder(target);
+        HttpUrl targetUrl = toUrl(target);
+        var queryKeys = targetUrl.queryParameterNames();
 
         if (args.getParams() != null) {
             for (final var key : args.getParams().keySet()) {
-                urlBuilder.addQueryParameter(key, args.getParams().get(key));
+                // makes sure the passed queries do not have the same key as queries in the target
+                if(!queryKeys.contains(key)) {
+                    urlBuilder.addQueryParameter(key, args.getParams().get(key));
+                }
             }
         }
 
