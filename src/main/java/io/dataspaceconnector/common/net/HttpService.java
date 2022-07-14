@@ -166,12 +166,11 @@ public class HttpService implements DataRetrievalService {
         Utils.requireNonNull(args, ErrorMessage.HTTP_ARGS_NULL);
 
         final var urlBuilder = createUrlBuilder(target);
-        HttpUrl targetUrl = toUrl(target);
-        var queryKeys = targetUrl.queryParameterNames();
+        final var targetUrl = toUrl(target);
+        final var queryKeys = targetUrl.queryParameterNames();
 
         if (args.getParams() != null) {
             for (final var key : args.getParams().keySet()) {
-                // makes sure the passed queries do not have the same key as queries in the target
                 if (!queryKeys.contains(key)) {
                     urlBuilder.addQueryParameter(key, args.getParams().get(key));
                 }
