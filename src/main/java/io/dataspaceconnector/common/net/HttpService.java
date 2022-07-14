@@ -31,6 +31,7 @@ import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayInputStream;
@@ -120,8 +121,7 @@ public class HttpService implements DataRetrievalService {
      */
     public Response post(final URL target, final HttpArgs args, final InputStream data)
             throws IOException {
-        Utils.requireNonNull(target, ErrorMessage.URI_NULL);
-        Utils.requireNonNull(args, ErrorMessage.HTTP_ARGS_NULL);
+        validateParameter(target, args);
 
         final var urlBuilder = createUrlBuilder(target);
 
@@ -143,8 +143,7 @@ public class HttpService implements DataRetrievalService {
         }
 
         final var response = httpSvc.send(requestBuilder.build());
-
-        final var output = new HttpResponse(response.code(), getBody(response));
+        final var output = getHttpResponse(response);
         response.close();
 
         return output;
@@ -162,8 +161,7 @@ public class HttpService implements DataRetrievalService {
      * @throws IllegalArgumentException if any of the parameters is null.
      */
     public Response get(final URL target, final HttpArgs args) throws IOException {
-        Utils.requireNonNull(target, ErrorMessage.URI_NULL);
-        Utils.requireNonNull(args, ErrorMessage.HTTP_ARGS_NULL);
+        validateParameter(target, args);
 
         final var urlBuilder = createUrlBuilder(target);
         final var targetUrl = toUrl(target);
@@ -195,10 +193,20 @@ public class HttpService implements DataRetrievalService {
             response = httpSvc.getWithHeaders(targetUri, headerCopy);
         }
 
-        final var output = new HttpResponse(response.code(), getBody(response));
+        final var output = getHttpResponse(response);
         response.close();
 
         return output;
+    }
+
+    @NotNull
+    private HttpResponse getHttpResponse(final okhttp3.Response response) throws IOException {
+        return new HttpResponse(response.code(), getBody(response));
+    }
+
+    private void validateParameter(final URL target, final HttpArgs args) {
+        Utils.requireNonNull(target, ErrorMessage.URI_NULL);
+        Utils.requireNonNull(args, ErrorMessage.HTTP_ARGS_NULL);
     }
 
     private InputStream getBody(final okhttp3.Response response) throws IOException {
