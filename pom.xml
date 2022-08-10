@@ -85,6 +85,8 @@
 		<idscp2.version>0.10.3</idscp2.version>
 		<protobuf.version>3.21.4</protobuf.version>
 		<jsonwebtoken.version>0.11.5</jsonwebtoken.version>
+		<flyway.version>9.1.2</flyway.version>
+
 
 		<!-- Plugins -->
 		<maven-enforcer-plugin.version>3.1.0</maven-enforcer-plugin.version>
@@ -301,7 +303,7 @@
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
-			<version>9.1.2</version>
+			<version>${flyway.version}</version>
 		</dependency>
 
 		<dependency>
