@@ -91,7 +91,7 @@ public class ConnectorService {
     private final @NonNull OfferedResourceService offeredResourceService;
 
     /**
-     * Configuration Service, to read the version of the current configuration
+     * Configuration Service, to read the version of the current configuration.
      */
     private final @NonNull ConfigurationService configurationSvc;
 
@@ -218,7 +218,7 @@ public class ConnectorService {
         return connectorImpl;
     }
 
-    private void setCurrentValues(BaseConnectorImpl connectorImpl) {
+    private void setCurrentValues(final BaseConnectorImpl connectorImpl) {
         //set correct version
         connectorImpl.setVersion(configurationSvc.getActiveConfig().getVersion());
 
