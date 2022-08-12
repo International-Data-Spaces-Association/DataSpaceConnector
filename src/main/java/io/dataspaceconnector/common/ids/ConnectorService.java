@@ -93,7 +93,7 @@ public class ConnectorService {
     /**
      * Configuration Service, to read the version of the current configuration.
      */
-    private final @NonNull ConfigurationService configurationSvc;
+    private final @NonNull ConfigurationService configurationService;
 
     /**
      * Get keystore manager from ids messaging services.
@@ -219,14 +219,19 @@ public class ConnectorService {
     }
 
     private void setCurrentValues(final BaseConnectorImpl connectorImpl) {
+
+        if (configurationService.getActiveConfig() == null) {
+            return;
+        }
+
         //set correct version
-        connectorImpl.setVersion(configurationSvc.getActiveConfig().getVersion());
+        connectorImpl.setVersion(configurationService.getActiveConfig().getVersion());
 
         //set correct maintainer
-        connectorImpl.setMaintainer(configurationSvc.getActiveConfig().getMaintainer());
+        connectorImpl.setMaintainer(configurationService.getActiveConfig().getMaintainer());
 
         //set correct curator
-        connectorImpl.setCurator(configurationSvc.getActiveConfig().getCurator());
+        connectorImpl.setCurator(configurationService.getActiveConfig().getCurator());
     }
 
     /**
