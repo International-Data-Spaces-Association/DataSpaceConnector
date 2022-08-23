@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [8.0.0] - 2022-08-23
 
+
 ### Major Changes
 - Renamed reserved keywords columns in model classes for newer H2 versions and MSSQL. Please enable database migration.
 
