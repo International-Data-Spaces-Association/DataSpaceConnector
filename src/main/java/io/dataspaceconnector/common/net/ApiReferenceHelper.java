@@ -19,6 +19,7 @@
  */
 package io.dataspaceconnector.common.net;
 
+import io.dataspaceconnector.common.util.UUIDUtils;
 import io.dataspaceconnector.config.BasePath;
 import io.dataspaceconnector.model.artifact.Artifact;
 import io.dataspaceconnector.repository.RouteRepository;
@@ -59,8 +60,8 @@ public final class ApiReferenceHelper {
      * @return True, if the URL is a route reference; false otherwise.
      */
     public boolean isRouteReference(final URL url) {
-        final var id = url.getPath().substring(url.getPath().lastIndexOf('/') + 1);
-        return routeRepository.existsById(UUID.fromString(id));
+        final var uuid = UUIDUtils.uuidFromUrl(url);
+        return routeRepository.existsById(uuid);
     }
 
     /**
