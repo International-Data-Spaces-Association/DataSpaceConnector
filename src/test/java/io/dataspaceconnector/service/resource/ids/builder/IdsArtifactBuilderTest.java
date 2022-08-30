@@ -56,8 +56,6 @@ public class IdsArtifactBuilderTest {
     @MockBean
     private SelfLinkHelper selfLinkHelper;
 
-    @MockBean
-    private RouteRepository routeRepository;
 
     private final ZonedDateTime date = ZonedDateTime.now(ZoneOffset.UTC);
 
