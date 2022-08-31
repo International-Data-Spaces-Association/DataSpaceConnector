@@ -31,7 +31,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.net.URL;
-import java.util.UUID;
 
 /**
  * Helper class for managing route references.
