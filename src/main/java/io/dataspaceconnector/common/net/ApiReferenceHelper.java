@@ -19,6 +19,7 @@
  */
 package io.dataspaceconnector.common.net;
 
+import io.dataspaceconnector.common.exception.UUIDFormatException;
 import io.dataspaceconnector.common.util.UUIDUtils;
 import io.dataspaceconnector.config.BasePath;
 import io.dataspaceconnector.model.artifact.Artifact;
@@ -59,8 +60,12 @@ public final class ApiReferenceHelper {
      * @return True, if the URL is a route reference; false otherwise.
      */
     public boolean isRouteReference(final URL url) {
-        final var uuid = UUIDUtils.uuidFromUrl(url);
-        return routeRepository.existsById(uuid);
+        try {
+            final var uuid = UUIDUtils.uuidFromUrl(url);
+            return routeRepository.existsById(uuid);
+        } catch (UUIDFormatException exception) {
+            return false;
+        }
     }
 
     /**

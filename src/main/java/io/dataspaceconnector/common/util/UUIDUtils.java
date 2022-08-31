@@ -121,7 +121,7 @@ public final class UUIDUtils {
     public static UUID uuidFromUrl(final URL url) throws UUIDFormatException {
         try {
             return uuidFromUri(url.toURI(), -1);
-        } catch (URISyntaxException exception) {
+        } catch (URISyntaxException | IndexOutOfBoundsException exception) {
             throw new UUIDFormatException("No uuid could be found in the uri.", exception);
         }
     }
