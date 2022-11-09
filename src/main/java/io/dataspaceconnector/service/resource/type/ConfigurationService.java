@@ -349,7 +349,6 @@ public class ConfigurationService extends BaseEntityService<Configuration, Confi
 
         if (configuration.getTruststore() != null) {
             final var trustStoreDesc = new TruststoreDesc();
-            trustStoreDesc.setAlias(configuration.getTruststore().getAlias());
             trustStoreDesc.setLocation(configuration.getTruststore().getLocation());
             trustStoreDesc.setPassword(configuration.getTruststore().getPassword());
             desc.setTruststore(trustStoreDesc);

@@ -68,7 +68,6 @@ public final class IdsConfigModelBuilder extends AbstractIdsBuilder<Configuratio
                 ._keyStoreAlias_(config.getKeystore().getAlias())
                 ._trustStore_(config.getTruststore().getLocation())
                 ._trustStorePassword_(config.getTruststore().getPassword())
-                ._trustStoreAlias_(config.getTruststore().getAlias())
                 ._configurationModelLogLevel_(logLevel)
                 ._connectorStatus_(status)
                 ._connectorDescription_(connector);
