@@ -27,6 +27,7 @@ All notable changes to this project will be documented in this file.
 - Bump dependency-check-maven from 7.2.1 to 7.3.0
 - Bump equalsverifier from 3.10.1 to 3.11
 - Bump checkstyle from 10.3.4 to 10.4
+- Bump springframework.version from 5.3.23 to 5.3.24
 
 ## [8.0.2] - 2022-10-11
 
