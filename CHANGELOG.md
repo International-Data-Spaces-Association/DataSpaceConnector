@@ -14,8 +14,8 @@ All notable changes to this project will be documented in this file.
 - Bump spring-security-core.version from 5.7.3 to 5.7.5
 - Bump pmd.version from 6.50.0 to 6.51.0
 - Bump springdoc.version from 1.6.11 to 1.6.13
-- Bump jackson-databind from 2.14.0-rc1 to 2.14.0
-- Bump jackson.version from 2.14.0-rc1 to 2.14.0
+- Bump jackson-databind from 2.14.0-rc1 to 2.14.1
+- Bump jackson.version from 2.14.0-rc1 to 2.14.1
 - Bump pitest-maven from 1.9.7 to 1.9.11
 - Bump swagger-annotations from 1.6.7 to 1.6.9
 - Bump jose4j from 0.9.0 to 0.9.2
