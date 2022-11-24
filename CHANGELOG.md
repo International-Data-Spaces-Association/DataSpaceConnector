@@ -27,6 +27,7 @@ All notable changes to this project will be documented in this file.
 - Bump dependency-check-maven from 7.2.1 to 7.3.2
 - Bump equalsverifier from 3.10.1 to 3.11.1
 - Bump checkstyle from 10.3.4 to 10.4
+- Bump postgresql version from 42.5.0 to 42.5.1
 
 ## [8.0.2] - 2022-10-11
 
