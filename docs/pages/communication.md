@@ -39,7 +39,7 @@ when setting up a data exchange example deployment.
 An instance of the Dataspace Connector is currently available in the IDS Lab at
 [https://simpleconnector.ids.isst.fraunhofer.de/](https://simpleconnector.ids.isst.fraunhofer.de/).
 It can only be reached from inside a VPN network. To get your IP address unblocked, please contact
-[us](mailto:info@dataspace-connector.de).
+[us](mailto:support@sovity.de).
 * The connector self-description is available at [https://simpleconnector.ids.isst.fraunhofer.de/](https://simpleconnector.ids.isst.fraunhofer.de/) (GET).
 * The open endpoint for IDS communication is
   [https://simpleconnector.ids.isst.fraunhofer.de/api/ids/data](https://simpleconnector.ids.isst.fraunhofer.de/api/ids/data) (POST).
