@@ -29,10 +29,10 @@ as the latest release. This will look as follows, e.g.:
 ```json
 {
   "title": "Dataspace Connector",
-  "description": "IDS Connector originally developed by the Fraunhofer ISST",
+  "description": "IDS Connector",
   "version": "6.2.0",
   "contact": {
-    "organization": "Fraunhofer Institute for Software and Systems Engineering",
+    "organization": "sovity",
     "website": "https://www.dataspace-connector.io/",
     "email": "support@sovity.de"
   },
