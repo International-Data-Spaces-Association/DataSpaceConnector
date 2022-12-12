@@ -32,9 +32,8 @@ as the latest release. This will look as follows, e.g.:
   "description": "IDS Connector",
   "version": "6.2.0",
   "contact": {
-    "organization": "sovity",
-    "website": "https://www.dataspace-connector.io/",
-    "email": "support@sovity.de"
+    "organization": "sovity GmbH",
+    "email": "contact@sovity.de"
   },
   "license": {
     "name": "Apache License, Version 2.0",
