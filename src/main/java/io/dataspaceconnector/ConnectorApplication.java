@@ -53,6 +53,7 @@ public class ConnectorApplication {
      * @param args List of arguments.
      */
     public static void main(final String[] args) {
+
         SpringApplication.run(ConnectorApplication.class, args);
     }
 
