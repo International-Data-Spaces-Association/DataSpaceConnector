@@ -3,20 +3,20 @@
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd">
     <mirrors>
         <mirror>
-            <id>my-repository-http-unblocker</id>
-            <mirrorOf>my-blocked-http-repository</mirrorOf>
+            <id>eis-public-repo-unblocker</id>
+            <mirrorOf>eis-public-repo</mirrorOf>
             <name></name>
             <url>http://maven.iais.fraunhofer.de/artifactory/eis-ids-public</url>
         </mirror>
         <mirror>
-            <id>my-repository-http-unblocker</id>
-            <mirrorOf>my-blocked-http-repository</mirrorOf>
+            <id>eis-snapshot-repo-unblocker</id>
+            <mirrorOf>eis-snapshot-repo</mirrorOf>
             <name></name>
             <url>http://maven.iais.fraunhofer.de/artifactory/eis-ids-snapshot</url>
         </mirror>
         <mirror>
-            <id>my-repository-http-unblocker</id>
-            <mirrorOf>my-blocked-http-repository</mirrorOf>
+            <id>eis-ids-public-unblocker</id>
+            <mirrorOf>eis-ids-public</mirrorOf>
             <name></name>
             <url>http://maven.iais.fraunhofer.de/artifactory/eis-ids-public</url>
         </mirror>
