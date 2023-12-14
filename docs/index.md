@@ -9,6 +9,8 @@ permalink: /
 # Manual and Documentation
 {: .fs-9 }
 
+THIS PROJECT IS NO LONGER ACTIVELY MAINTAINED AND IS LOOKING FOR NEW MAINTAINER. THE DOCUMENTATION REFERS MAINLY TO THE IDS-PROTOCOL AND NOT ON THE DSP-PROTOCOL!
+
 This documentation should help you to become familiar with the Dataspace Connector - to try it out,
 integrate it in your use cases, or contribute to its development.
 {: .fs-6 .fw-300 }
