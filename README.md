@@ -121,10 +121,10 @@ improvement, or have an idea for a useful feature. Please find a set of guidelin
 
 **This project is currently no longer maintained but looking for new maintainers.**
 
-Applications for maintainers shall be directed to the [International Data Space Association](mailto:info@internationaldataspaces.org).
+Applications for maintainers shall be directed to the [International Data Spaces Association](mailto:info@internationaldataspaces.org).
 
 This project was previously maintained by Fraunhofer ISST and after that by sovity GmbH.
-Please do not approach former maintainers. If you have questions, plase open an issue / discussion for the community or approach the [International Data Space Association](mailto:info@internationaldataspaces.org).
+Please do not approach former maintainers. If you have questions, plase open an issue / discussion for the community or approach the [International Data Spaces Association](mailto:info@internationaldataspaces.org).
 
 Former maintainer, developer and contributer:
 
