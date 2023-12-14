@@ -21,10 +21,10 @@ integrate it in your use cases, or contribute to its development.
 
 **This project is currently no longer maintained but looking for new maintainers.**
 
-Applications for maintainers shall be directed to IDSA.
+Applications for maintainers shall be directed to the [International Data Space Association](mailto:info@internationaldataspaces.org).
 
 This project was previously maintained by Fraunhofer ISST and after that by sovity GmbH.
-Please do not approach former maintainers. If you have questions, plase open an issue / discussion for the community or approach the IDSA.
+Please do not approach former maintainers. If you have questions, plase open an issue / discussion for the community or approach the [International Data Space Association](mailto:info@internationaldataspaces.org).
 
 With the
 help of the Dataspace Connector, existing software can easily be extended by IDS connector
