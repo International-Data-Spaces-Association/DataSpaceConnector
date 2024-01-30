@@ -42,8 +42,12 @@ env:
 
 # -- Persistent database properties
 postgresql:
-  # -- Whether to use a postgresql backend
+  # -- Whether to deploy a postgresql database server alongside the dataspace-connector
   enabled: true
+  # -- Whether to use an existing postgresql database rather than deploying a new one. Only set this to true, if "enabled" is false.
+  external: false
+  # -- The hostname of the external postgresql database.
+  postgresqlHost:
   # -- Postgresql username
   postgresqlUsername: "password"
   # -- Postgresql password
