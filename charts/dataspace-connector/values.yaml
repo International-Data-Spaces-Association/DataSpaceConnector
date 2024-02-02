@@ -44,16 +44,18 @@ env:
 postgresql:
   # -- Whether to use a postgresql backend
   enabled: true
-  # -- Postgresql username
-  postgresqlUsername: "password"
-  # -- Postgresql password
-  postgresqlPassword: "username"
-  # -- Postgresql database name
-  postgresqlDatabase: "test"
+  auth:
+    # -- Postgresql username
+    username: "connector"
+    # -- Postgresql password
+    password: "password"
+    # -- Postgresql database name
+    database: "connector"
   # -- Kubernetes postgresql service
   service:
     # -- Postgresql service port
-    port: "5432"
+    ports:
+      postgresql: 5432
 
 # -- Secrets for pulling images
 imagePullSecrets: []

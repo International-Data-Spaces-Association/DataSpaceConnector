@@ -11,7 +11,7 @@ data:
 {{- end}}
 {{- if .Values.postgresql.enabled }}
   SPRING_DATASOURCE_PLATFORM: "postgres"
-  SPRING_DATASOURCE_URL: "jdbc:postgresql://{{ .Release.Name }}-postgresql:{{ .Values.postgresql.service.port }}/{{ .Values.postgresql.postgresqlDatabase }}"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://{{ .Release.Name }}-postgresql:{{ .Values.postgresql.service.ports.postgresql }}/{{ .Values.postgresql.auth.database }}"
   SPRING_DATASOURCE_DRIVERCLASSNAME: "org.postgresql.Driver"
   SPRING_JPA_DATABASEPLATFORM: "org.hibernate.dialect.PostgreSQLDialect"
 {{- end}}
